@@ -10,11 +10,16 @@
 		<input type="input" id="idinput" v-model="message"/>
 		<!--<pre>### {{ info }} ###</pre>-->
 		<button @click="getAthleteEmails()">Get Athlete emails</button>
-		<ul v-if="mybool2">
-			<li v-for="email in emails.data" :key="email.rowtableid">
-				{{email.activitytype}} {{ email.destemail}} {{email.destname}}
-			</li>
-		</ul>
+		<div v-if="mybool2">
+			<table>
+				<tr v-for="email in emails.data" :key="email.rowtableid">
+					<td>{{email.activitytype}}</td>
+					<td>{{ email.destemail}}</td>
+					<td>{{email.destname}}</td>
+					<td><button @click="deleteEmail(email.rowtableid)">Delete email</button></td>
+				</tr>	
+			</table>
+		</div>
 	</span>
 	<div>
 		<h2>Add email to athlete</h2>
@@ -76,6 +81,12 @@
 				this.myjobject.athleteid = this.message;
 				axios
 				.post("https://api.madastur.com/strava/activityemail",this.myjobject);
+			},
+			deleteEmail(rowtableid){
+
+				axios
+				.delete("https://api.madastur.com/strava/del-email/"+rowtableid+"/")
+
 			}
 
 		},
