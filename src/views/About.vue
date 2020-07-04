@@ -1,5 +1,6 @@
-<template><div class="about"><h1>This is an about page</h1>
-	<button @click="getActivityTypes()">Get Activity types</button>
+<template>
+	<div class="about">
+	<button @click="getActivityTypes()" v-if="mybool">Get Activity types</button>
 		<ul v-if="mybool">
 			<li v-for="item in info.data" :key="item.rowtableid">
 				{{ item.activitytype}} {{item.rowtableid}}
@@ -11,19 +12,21 @@
 		<!--<pre>### {{ info }} ###</pre>-->
 		<button @click="getAthleteEmails()">Get Athlete emails</button>
 		<div v-if="mybool2">
-			<table>
+			<br/>
+			<table align="center">
 				<tr v-for="email in emails.data" :key="email.rowtableid">
 					<td>{{email.activitytype}}</td>
 					<td>{{ email.destemail}}</td>
 					<td>{{email.destname}}</td>
+					<td>{{email.approved}}</td>
 					<td><button @click="deleteEmail(email.rowtableid)">Delete email</button></td>
 				</tr>	
 			</table>
 		</div>
 	</span>
-	<div>
+	<div align="center">
 		<h2>Add email to athlete</h2>
-		<table>
+		<table align="center">
 			<tr>
 				<td>Dest email: </td><td><input type="text" id="destemail" v-model="myjobject.destemail"></td>		
 			</tr>
@@ -33,7 +36,7 @@
 			<tr>
 				<td>Activity:</td>
 				<td>
-					<select v-if="mybool" v-model="myjobject.activitytype">
+					<select v-model="myjobject.activitytype">
 						<option v-for="item in info.data" :key="item.rowtableid">
 						{{ item.activitytype}}
 						</option>
@@ -56,11 +59,12 @@
 					athleteid: this.message,
 					destemail: "",
 					destname:"",
-					activitytype:""
+					activitytype:"",
+					approved:false
 
 				},
 				message: '3656102',
-				mybool:true,
+				mybool:false,
 				mybool2:false,
 				info: [],
 				emails: []
@@ -71,21 +75,24 @@
 			getActivityTypes(){
 				this.mybool = !this.mybool;
 			},
-			getAthleteEmails(){
-				axios
+			async getAthleteEmails(){
+				await axios
 				.get('https://api.madastur.com/strava/dest-email/'+this.message)
 				.then(response => (this.emails = response));
 				this.mybool2 = true;
 			},
-			submitEmail(){
+			async submitEmail(){
+				//this.mybool2 = false;
 				this.myjobject.athleteid = this.message;
-				axios
+				await axios
 				.post("https://api.madastur.com/strava/activityemail",this.myjobject);
+				this.getAthleteEmails();
 			},
-			deleteEmail(rowtableid){
-
-				axios
+			async deleteEmail(rowtableid){
+				//this.mybool2 = false;
+				await axios
 				.delete("https://api.madastur.com/strava/del-email/"+rowtableid+"/")
+				this.getAthleteEmails();
 
 			}
 
