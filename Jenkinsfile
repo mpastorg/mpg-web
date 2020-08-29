@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('stage1') {
       steps {
-        echo 'Hola build $BUILD_NUMBER'
+        sh 'echo "Hola build $BUILD_NUMBER"'
       }
     }
 
