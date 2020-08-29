@@ -1,8 +1,9 @@
 pipeline {
+  agent any
   stages {
-    stage('') {
+    stage('stage1') {
       steps {
-        echo 'Hola'
+        echo 'Hola build $BUILD_NUMBER'
       }
     }
 
