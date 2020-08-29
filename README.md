@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+docker build -t mpastorg/mpg-vuejs:0.2.3 .
+docker push mpastorg/mpg-vuejs:0.2.3
