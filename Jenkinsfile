@@ -1,5 +1,6 @@
 pipeline {
-  agent { dockerfile true }
+  agent any
+  #agent { dockerfile true }
   environment {
     RELEASE = '0.2'
   }
