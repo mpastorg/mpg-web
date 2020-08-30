@@ -1,10 +1,13 @@
 pipeline {
   agent { dockerfile true }
+  enviornment {
+    RELEASE = '0.2'
+  }
   stages {
     stage('stage1') {
       steps {
         sh 'node --version'
-        sh 'echo "Hola build $BUILD_NUMBER"'
+        sh 'echo "Hola build: $RELEASE.$BUILD_NUMBER"'
       }
     }
 
