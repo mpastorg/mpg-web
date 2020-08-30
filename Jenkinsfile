@@ -1,6 +1,6 @@
 pipeline {
   agent { dockerfile true }
-  enviornment {
+  environment {
     RELEASE = '0.2'
   }
   stages {
