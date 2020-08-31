@@ -19,16 +19,19 @@ pipeline {
          * docker build on the command line */
       steps {
         script {
-          docker.build("mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER")
+          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER")
         }
       }
     }
-    stage('stage1') {
-      steps {
-        //sh 'node --version'
-        sh 'echo "Hola build: $RELEASE.$BUILD_NUMBER"'
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
       }
     }
-
+    
   }
 }
