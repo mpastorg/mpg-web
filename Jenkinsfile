@@ -18,7 +18,7 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER")
+        docker.build("mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER")
     }
     stage('stage1') {
       steps {
