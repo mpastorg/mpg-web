@@ -63,6 +63,7 @@
 					approved:false
 
 				},
+				url: "http://localhost:8082/",
 				message: '3656102',
 				mybool:false,
 				mybool2:false,
@@ -77,7 +78,7 @@
 			},
 			async getAthleteEmails(){
 				await axios
-				.get('https://api.madastur.com/strava/dest-email/'+this.message)
+				.get(this.url+'strava/dest-email/'+this.message)
 				.then(response => (this.emails = response));
 				this.mybool2 = true;
 			},
@@ -85,13 +86,13 @@
 				//this.mybool2 = false;
 				this.myjobject.athleteid = this.message;
 				await axios
-				.post("https://api.madastur.com/strava/activityemail",this.myjobject);
+				.post(this.url+"strava/activityemail",this.myjobject);
 				this.getAthleteEmails();
 			},
 			async deleteEmail(rowtableid){
 				//this.mybool2 = false;
 				await axios
-				.delete("https://api.madastur.com/strava/del-email/"+rowtableid+"/")
+				.delete(this.url+"strava/del-email/"+rowtableid+"/")
 				this.getAthleteEmails();
 
 			}
@@ -99,7 +100,7 @@
 		},
 		created () {
 			axios
-			.get('https://api.madastur.com/strava/act-types/')
+			.get(this.url+'strava/act-types/')
 			.then(response => (this.info = response))
 		}
 	}
