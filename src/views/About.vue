@@ -63,7 +63,8 @@
 					approved:false
 
 				},
-				url: "http://localhost:8082/",
+				//url: "http://localhost:8082/",
+				url: "https://api.madastur.com/"
 				message: '3656102',
 				mybool:false,
 				mybool2:false,
