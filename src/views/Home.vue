@@ -2,7 +2,7 @@
 	<div class="home">
 		<img src="../assets/logo.jpg">
 		<h1>
-			<a href="https://www.strava.com/api/v3/oauth/authorize?client_id=48995&scope=profile:read_all,activity:read_all&redirect_uri=https://api.madastur.com/strava/auth-mpg/&response_type=code&approval_prompt=auto">Go to Strava.com to authorize madastur.com</a>
+			<a href="https://www.strava.com/api/v3/oauth/authorize?client_id=48995&scope=profile:read_all,activity:read_all&redirect_uri=https://api.madastur.com/strava/auth-mpg/&response_type=code&approval_prompt=auto&state=mpgprueba">Go to Strava.com to authorize madastur.com</a>
 		</h1>
 		<br/>
 		<br/>
@@ -22,7 +22,7 @@
 		</h1>
       <br/>
 		<h1>
-			<a href="http://localhost:8082/oauth2/authorization/strava">http://localhost:8082/oauth2/authorization/strava</a>
+			<a href="http://localhost:8082/oauth2/authorization/strava">Spring Boot http://localhost:8082/oauth2/authorization/strava</a>
 		</h1>
       <br/>
       <button @click="stravalogin"> Strava login</button>
@@ -32,6 +32,24 @@
 </template>
 <script>
 const axios = require('axios').default;
+// const Keycloak = require('keycloak-js')
+// let initOptions = {
+//   url: 'https://mpgubu18:30226/auth', realm: 'strava-realm', clientId: 'strava-public', responseType: 'id_token token', scope: 'openid profile email'
+// }
+
+// let keycloak = Keycloak(initOptions);
+
+// keycloak.init({ onLoad: initOptions.onLoad }).then((auth) => {
+//   if (!auth) {
+//     window.location.reload();
+//   } else {
+//     console.log("Authenticated");
+//     console.log(auth.scope);
+
+//     }
+//   }
+// );
+
 export default {
   name: "Home",
   props: {

@@ -1,11 +1,7 @@
 <template>
 	<div class="about">
-	<button @click="getActivityTypes()" v-if="mybool">Get Activity types</button>
-		<ul v-if="mybool">
-			<li v-for="item in info.data" :key="item.rowtableid">
-				{{ item.activitytype}} {{item.rowtableid}}
-			</li>
-		</ul>
+	<button @click="showActivityTypes()">Show Activity types</button>
+	<ActivityTypes v-if="mybool" :listActivityTypes= "info.data" />
 	<span>
 		<h1>List emails per athlete</h1>
 		<input type="input" id="idinput" v-model="message"/>
@@ -51,8 +47,11 @@
 </template>
 
 <script>
+    import ActivityTypes from "@/components/activity-types"
 	const axios = require('axios').default;
 	export default {
+		name: "About",
+		components: {ActivityTypes},
 		data() {
 			return {
 				myjobject: {
@@ -66,7 +65,7 @@
 				//url: "http://localhost:8082/",
 				url: "https://api.madastur.com/",
 				message: '3656102',
-				mybool:false,
+				mybool:true,
 				mybool2:false,
 				info: [],
 				emails: []
@@ -74,7 +73,7 @@
 			
 		},
 		methods: {
-			getActivityTypes(){
+			showActivityTypes(){
 				this.mybool = !this.mybool;
 			},
 			async getAthleteEmails(){
