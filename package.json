@@ -8,13 +8,16 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@dsb-norge/vue-keycloak-js": "^1.2.0",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "keycloak-js": "^11.0.2",
     "vue": "^2.6.11",
     "vue-google-oauth2": "^1.5.4",
     "vue-keycloak-js": "^0.1.0",
+    "vue-oidc-client": "^0.4.1",
     "vue-router": "^3.2.0",
+    "vue-uuid": "^2.0.2",
     "vuejs-logger": "^1.5.4"
   },
   "devDependencies": {

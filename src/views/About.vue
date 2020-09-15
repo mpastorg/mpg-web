@@ -1,7 +1,7 @@
 <template>
 	<div class="about">
 	<button @click="showActivityTypes()">Show Activity types</button>
-	<ActivityTypes v-if="mybool" :listActivityTypes= "info.data" />
+	<ActivityTypes v-if="mybool" :listActivityTypes= "activityTypes.data" />
 	<span>
 		<h1>List emails per athlete</h1>
 		<input type="input" id="idinput" v-model="message"/>
@@ -33,7 +33,7 @@
 				<td>Activity:</td>
 				<td>
 					<select v-model="myjobject.activitytype">
-						<option v-for="item in info.data" :key="item.rowtableid">
+						<option v-for="item in activityTypes.data" :key="item.rowtableid">
 						{{ item.activitytype}}
 						</option>
 					</select>
@@ -67,7 +67,7 @@
 				message: '3656102',
 				mybool:true,
 				mybool2:false,
-				info: [],
+				activityTypes: [],
 				emails: []
 			};
 			
@@ -101,7 +101,7 @@
 		created () {
 			axios
 			.get(this.url+'strava/act-types/')
-			.then(response => (this.info = response))
+			.then(response => (this.activityTypes = response))
 		}
 	}
 </script>
