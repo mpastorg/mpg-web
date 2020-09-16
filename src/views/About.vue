@@ -64,7 +64,8 @@
 				},
 				//url: "http://localhost:8082/",
 				url: "https://api.madastur.com/",
-				message: '3656102',
+				message: localStorage.athleteId,
+				header: {headers: {'vueid' : localStorage.stravaUuid}},
 				mybool:true,
 				mybool2:false,
 				activityTypes: [],
@@ -78,7 +79,7 @@
 			},
 			async getAthleteEmails(){
 				await axios
-				.get(this.url+'strava/dest-email/'+this.message)
+				.get(this.url+'strava/dest-email/'+this.message, this.header)
 				.then(response => (this.emails = response));
 				this.mybool2 = true;
 			},
@@ -86,19 +87,24 @@
 				//this.mybool2 = false;
 				this.myjobject.athleteid = this.message;
 				await axios
-				.post(this.url+"strava/activityemail",this.myjobject);
+				.post(this.url+"strava/activityemail",this.myjobject), this.header;
 				this.getAthleteEmails();
 			},
 			async deleteEmail(rowtableid){
 				//this.mybool2 = false;
 				await axios
-				.delete(this.url+"strava/del-email/"+rowtableid+"/")
+				.delete(this.url+"strava/del-email/"+rowtableid+"/", this.header)
 				this.getAthleteEmails();
 
 			}
 
 		},
 		created () {
+			console.info('Entering created')
+
+			if (localStorage.athleteId==''){
+				this.$router.push({name: 'Home'})
+			}
 			axios
 			.get(this.url+'strava/act-types/')
 			.then(response => (this.activityTypes = response))

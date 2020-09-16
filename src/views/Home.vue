@@ -25,22 +25,31 @@
 			<a href="http://localhost:8082/oauth2/authorization/strava">Spring Boot http://localhost:8082/oauth2/authorization/strava</a>
 		</h1>
       <br/>
-      <button @click="stravalogin"> Strava login</button>
+      <button @click="cleanstravalogin"> Clean Strava login</button>
       <br/>
       <input type="text" id="loginresponse" v-model="loginresponse">
-      <span id="mystorage"> {{stravaUuid}}
+      <br/>
+      <span id="mystorage">
+        uuid: {{stravaUuid}} <br/>
+        athleteId: {{athleteId}}
+      </span> <br/>
+      <span id="myurl">
+        url: {{checkUrl()}} <br/>
       </span>
 	</div>
 </template>
 <script>
 import { uuid} from 'vue-uuid';
-const axios = require('axios').default
+//const axios = require('axios').default
 
 function getStravaUuid(){
   if (!localStorage.stravaUuid){
     localStorage.stravaUuid = uuid.v4() 
   }
   return localStorage.stravaUuid
+}
+function getAthleteId(){
+  return localStorage.athleteId
 }
 
 export default {
@@ -51,16 +60,19 @@ export default {
   data() {
     return {
       stravaUuid: getStravaUuid(),
+      athleteId: getAthleteId(),
       isInit: false,
       isSignIn: false,
       loginresponse: "",
     };
   },
   methods: {
-  stravalogin(){
-		axios
-			.get('http://localhost:8082/strava/user/')
-			.then(response => (this.loginresponse = response));
+  cleanstravalogin(){
+    localStorage.athleteId = ''
+    localStorage.stravaUuid = ''
+		// axios
+		// 	.get('http://localhost:8082/strava/user/')
+		// 	.then(response => (this.loginresponse = response));
 	},
     handleClickLogin() {
       this.$gAuth
@@ -101,6 +113,14 @@ export default {
       that.isSignIn = that.$gAuth.isAuthorized;
       if (that.isInit) clearInterval(checkGauthLoad);
     }, 1000);
+  },
+  checkUrl(){
+    console.info(this.$route.query)
+    if (this.$route.query.mpgstate == this.stravaUuid){
+      localStorage.athleteId = this.$route.query.athlete;
+      this.athleteId = localStorage.athleteId
+    }
+    return this.$route.query
   }
 }
 };
