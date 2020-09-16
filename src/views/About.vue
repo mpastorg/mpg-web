@@ -24,10 +24,13 @@
 		<h2>Add email to athlete</h2>
 		<table align="center">
 			<tr>
-				<td>Dest email: </td><td><input type="text" id="destemail" v-model="myjobject.destemail"></td>		
+				<td>Athlete: </td><td><input type="input" id="athleteid" v-model="myjobject.athleteid"/></td>		
 			</tr>
 			<tr>
-				<td>Dest name: </td><td><input type="text" id="destname" v-model="myjobject.destname"></td>		
+				<td>Dest email: </td><td><input type="text" id="destemail" v-model="myjobject.destemail"/></td>		
+			</tr>
+			<tr>
+				<td>Dest name: </td><td><input type="text" id="destname" v-model="myjobject.destname"/></td>		
 			</tr>
 			<tr>
 				<td>Activity:</td>
@@ -54,6 +57,7 @@
 		components: {ActivityTypes},
 		data() {
 			return {
+				message: localStorage.athleteId,
 				myjobject: {
 					athleteid: this.message,
 					destemail: "",
@@ -62,9 +66,8 @@
 					approved:false
 
 				},
-				//url: "http://localhost:8082/",
-				url: "https://api.madastur.com/",
-				message: localStorage.athleteId,
+				url: "http://localhost:8082/",
+				//url: "https://api.madastur.com/",
 				header: {headers: {'vueid' : localStorage.stravaUuid}},
 				mybool:true,
 				mybool2:false,
@@ -85,16 +88,23 @@
 			},
 			async submitEmail(){
 				//this.mybool2 = false;
-				this.myjobject.athleteid = this.message;
+				//this.myjobject.athleteid = this.message;
 				await axios
 				.post(this.url+"strava/activityemail",this.myjobject), this.header;
 				this.getAthleteEmails();
 			},
 			async deleteEmail(rowtableid){
 				//this.mybool2 = false;
+				//TODO it's not refreshing correctly after delete the email
 				await axios
 				.delete(this.url+"strava/del-email/"+rowtableid+"/", this.header)
-				this.getAthleteEmails();
+				.then(await this.getAthleteEmails())
+				.catch((error) => {
+					localStorage.stravaUuid ='';
+					localStorage.athleteId ='';
+					this.$router.push({name: 'Home'})					
+					throw error.response.data;
+				})
 
 			}
 
@@ -102,7 +112,7 @@
 		created () {
 			console.info('Entering created')
 
-			if (localStorage.athleteId==''){
+			if (localStorage.athleteId=='' || localStorage.athleteId==undefined){
 				this.$router.push({name: 'Home'})
 			}
 			axios

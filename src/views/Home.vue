@@ -18,7 +18,7 @@
         v-if="!isSignIn"
       >sign in</button>
 		<h1>
-			<a href="https://www.strava.com/api/v3/oauth/authorize?client_id=48995&scope=profile:read_all,activity:read_all&redirect_uri=http://localhost:8082/strava/auth-mpg/&response_type=code&approval_prompt=auto">Go to Strava.com to authorize localhost</a>
+			<a v-bind:href="'https://www.strava.com/api/v3/oauth/authorize?client_id=48995&scope=profile:read_all,activity:read_all&redirect_uri=http://localhost:8082/strava/auth-mpg/&response_type=code&approval_prompt=auto&state='+stravaUuid">Go to Strava.com to authorize localhost</a>
 		</h1>
       <br/>
 		<h1>
