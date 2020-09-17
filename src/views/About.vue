@@ -10,7 +10,7 @@
 		<div v-if="mybool2">
 			<br/>
 			<table align="center">
-				<tr v-for="email in emails.data" :key="email.rowtableid">
+				<tr v-for="email in destEmails" :key="email.rowtableid">
 					<td>{{email.activitytype}}</td>
 					<td>{{ email.destemail}}</td>
 					<td>{{email.destname}}</td>
@@ -77,14 +77,12 @@
 			
 		},
 		methods: {
-			...mapActions(['getActivityTypesAction']),
+			...mapActions(['getActivityTypesAction','getDestEmailsAction']),
 			showActivityTypes(){
 				this.mybool = !this.mybool;
 			},
 			async getAthleteEmails(){
-				await axios
-				.get(data.url+'strava/dest-email/'+this.message, this.header)
-				.then(response => (this.emails = response));
+				await this.$store.dispatch('getDestEmailsAction')
 				this.mybool2 = true;
 			},
 			async submitEmail(){
@@ -116,7 +114,7 @@
 			}
 		},
 		computed: {
-			...mapState(['activityTypes'] )
+			...mapState(['activityTypes','destEmails'] )
 		}
 	}
 </script>

@@ -5,15 +5,16 @@ import {data} from '../shared';
 Vue.use(Vuex)
 
 const state = {
-  activityTypes: [
-      {activitytype:'all',rowtableid:'e0a28d38-a365-431a-98dd-599dfa0996f4'}
-      ,{activitytype:'run',rowtableid:'bd6f335b-059e-4af5-b3f8-0a478e0a3562'}
-    ],
+  activityTypes: [],
+  destEmails: [],
 };
 const mutations = {
   getActivityTypes(state,activityTypes){
     
     state.activityTypes = activityTypes;
+  },
+  getDestEmails(state,destEmails){
+    state.destEmails = destEmails;
   }
 
 };
@@ -21,6 +22,10 @@ const actions = {
   async getActivityTypesAction({commit}){
     const activityTypes = await data.getActivityTypes();
     commit('getActivityTypes',activityTypes);
+  },
+  async getDestEmailsAction({commit}){
+    const destEmails = await data.getDestEmails();
+    commit('getDestEmails',destEmails);
   }
 };
 const getters = {};
