@@ -1,7 +1,7 @@
 <template>
 	<div class="about">
 	<button @click="showActivityTypes()">Show Activity types</button>
-	<ActivityTypes v-if="mybool" :listActivityTypes= "activityTypes.data" />
+	<ActivityTypes v-if="mybool" :listActivityTypes= "activityTypes" />
 	<span>
 		<h1>List emails per athlete</h1>
 		<input type="input" id="idinput" v-model="message"/>
@@ -36,7 +36,7 @@
 				<td>Activity:</td>
 				<td>
 					<select v-model="myjobject.activitytype">
-						<option v-for="item in activityTypes.data" :key="item.rowtableid">
+						<option v-for="item in activityTypes" :key="item.rowtableid">
 						{{ item.activitytype}}
 						</option>
 					</select>
@@ -50,7 +50,10 @@
 </template>
 
 <script>
-    import ActivityTypes from "@/components/activity-types"
+	import ActivityTypes from "@/components/activity-types"
+	import { mapState, mapActions } from 'vuex';
+	import { data} from '../shared';
+
 	const axios = require('axios').default;
 	export default {
 		name: "About",
@@ -66,38 +69,33 @@
 					approved:false
 
 				},
-				url: "http://localhost:8082/",
-				//url: "https://api.madastur.com/",
 				header: {headers: {'vueid' : localStorage.stravaUuid}},
 				mybool:true,
 				mybool2:false,
-				activityTypes: [],
 				emails: []
 			};
 			
 		},
 		methods: {
+			...mapActions(['getActivityTypesAction']),
 			showActivityTypes(){
 				this.mybool = !this.mybool;
 			},
 			async getAthleteEmails(){
 				await axios
-				.get(this.url+'strava/dest-email/'+this.message, this.header)
+				.get(data.url+'strava/dest-email/'+this.message, this.header)
 				.then(response => (this.emails = response));
 				this.mybool2 = true;
 			},
 			async submitEmail(){
-				//this.mybool2 = false;
-				//this.myjobject.athleteid = this.message;
 				await axios
-				.post(this.url+"strava/activityemail",this.myjobject), this.header;
+				.post(data.url+"strava/activityemail",this.myjobject), this.header;
 				this.getAthleteEmails();
 			},
 			async deleteEmail(rowtableid){
-				//this.mybool2 = false;
 				//TODO it's not refreshing correctly after delete the email
 				await axios
-				.delete(this.url+"strava/del-email/"+rowtableid+"/", this.header)
+				.delete(data.url+"strava/del-email/"+rowtableid+"/", this.header)
 				.then(await this.getAthleteEmails())
 				.catch((error) => {
 					localStorage.stravaUuid ='';
@@ -109,15 +107,16 @@
 			}
 
 		},
-		created () {
+		async created () {
 			console.info('Entering created')
+			await this.getActivityTypesAction();
 
 			if (localStorage.athleteId=='' || localStorage.athleteId==undefined){
 				this.$router.push({name: 'Home'})
 			}
-			axios
-			.get(this.url+'strava/act-types/')
-			.then(response => (this.activityTypes = response))
+		},
+		computed: {
+			...mapState(['activityTypes'] )
 		}
 	}
 </script>
