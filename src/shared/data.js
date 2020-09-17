@@ -1,6 +1,6 @@
 import * as axios from 'axios';
 
-export const url = process.env.VUE_APP_API_URL; 
+const url = process.env.VUE_APP_API_URL; 
 
 const getActivityTypes = async function() {
     console.info('entering getactivitytypes:' + url)
