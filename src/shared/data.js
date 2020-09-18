@@ -20,9 +20,17 @@ const getDestEmails = async function() {
     return response.data;
 }
 
+const getAthleteProfile = async function(){
+    const response = await axios
+    .get(url+'strava/athlete/', header);
+    console.info(response.data);
+    return response.data;
+
+}
 
 export const data ={
     getActivityTypes,
     getDestEmails,
+    getAthleteProfile,
     url,
 };

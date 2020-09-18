@@ -1,33 +1,24 @@
 <template>
 	<div class="home">
 		<img src="../assets/logo.jpg">
+    <div>
+      Hello, {{athleteName}}
+    </div>
 		<h1>
 			<a v-bind:href="'https://www.strava.com/api/v3/oauth/authorize?client_id=48995&scope=profile:read_all,activity:read_all&redirect_uri=https://api.madastur.com/strava/auth-mpg/&response_type=code&approval_prompt=auto&state='+stravaUuid">Go to Strava.com to authorize madastur.com</a>
 		</h1>
-		<br/>
-		<br/>
+		<h1>
+			<a v-bind:href="'https://www.strava.com/api/v3/oauth/authorize?client_id=48995&scope=profile:read_all,activity:read_all&redirect_uri=http://localhost:8082/strava/auth-mpg/&response_type=code&approval_prompt=auto&state='+stravaUuid">Go to Strava.com to authorize localhost</a>
+		</h1>
+      <br/>
 		<button
         type="primary"
         icon="fas fa-edit"
         @click="handleClickLogin"
       >get authCode</button>
-      <button
-        type="primary"
-        icon="fas fa-edit"
-        @click="handleClickSignIn"
-        v-if="!isSignIn"
-      >sign in</button>
-		<h1>
-			<a v-bind:href="'https://www.strava.com/api/v3/oauth/authorize?client_id=48995&scope=profile:read_all,activity:read_all&redirect_uri=http://localhost:8082/strava/auth-mpg/&response_type=code&approval_prompt=auto&state='+stravaUuid">Go to Strava.com to authorize localhost</a>
-		</h1>
       <br/>
-		<h1>
-			<a href="http://localhost:8082/oauth2/authorization/strava">Spring Boot http://localhost:8082/oauth2/authorization/strava</a>
-		</h1>
       <br/>
       <button @click="cleanstravalogin"> Clean Strava login</button>
-      <br/>
-      <input type="text" id="loginresponse" v-model="loginresponse">
       <br/>
       <span id="mystorage">
         uuid: {{stravaUuid}} <br/>
@@ -40,6 +31,7 @@
 </template>
 <script>
 import { uuid} from 'vue-uuid';
+import { data } from '../shared';
 //const axios = require('axios').default
 
 function getStravaUuid(){
@@ -51,7 +43,18 @@ function getStravaUuid(){
 function getAthleteId(){
   return localStorage.athleteId
 }
-
+//TODO Refactor to centralize localStorage and control athleteID
+async function getAthleteName(){
+    console.info("getAthName"+localStorage.athleteName)
+  if (localStorage.athleteName =='undefined' || localStorage.athleteName==''){
+    console.info("go get athlete")
+    const myLocalAthleteprofile = await data.getAthleteProfile();
+    localStorage.athleteName = myLocalAthleteprofile.name;
+    localStorage.athleteEmail = myLocalAthleteprofile.email;
+  }
+    console.info("getAthNamedespues"+localStorage.athleteName)
+    return localStorage.athleteName
+}
 export default {
   name: "Home",
   props: {
@@ -61,6 +64,7 @@ export default {
     return {
       stravaUuid: getStravaUuid(),
       athleteId: getAthleteId(),
+      athleteName: '',
       isInit: false,
       isSignIn: false,
       loginresponse: "",
@@ -70,49 +74,12 @@ export default {
   cleanstravalogin(){
     localStorage.athleteId = ''
     localStorage.stravaUuid = ''
-		// axios
-		// 	.get('http://localhost:8082/strava/user/')
-		// 	.then(response => (this.loginresponse = response));
+    localStorage.athleteName = ''
+    localStorage.athleteEmail = ''
 	},
     handleClickLogin() {
-      this.$gAuth
-        .getAuthCode()
-        .then(authCode => {
-          //on success
-          console.log("authCode", authCode);
-        })
-        .catch(error => {
-          //on fail do something
-          console.error(error);
-        });
-    },
-    handleClickSignIn() {
-      this.$gAuth
-        .signIn()
-        .then(GoogleUser => {
-          //on success do something
-          console.log("GoogleUser", GoogleUser);
-          console.log("getId", GoogleUser.getId());
-          console.log("getBasicProfile", GoogleUser.getBasicProfile());
-          console.log("getAuthResponse", GoogleUser.getAuthResponse());
-          console.log(
-            "getAuthResponse",
-            this.$gAuth.GoogleAuth.currentUser.get().getAuthResponse()
-          );
-          this.isSignIn = this.$gAuth.isAuthorized;
-        })
-        .catch(error => {
-          //on fail do something
-          console.error(error);
-        });
-    },
-    created() {
-    let that = this;
-    let checkGauthLoad = setInterval(function() {
-      that.isInit = that.$gAuth.isInit;
-      that.isSignIn = that.$gAuth.isAuthorized;
-      if (that.isInit) clearInterval(checkGauthLoad);
-    }, 1000);
+      console.info(data.getAthleteProfile());
+
   },
   checkUrl(){
     console.info(this.$route.query)
@@ -122,6 +89,9 @@ export default {
     }
     return this.$route.query
   }
-}
+},
+  async created() {
+    this.athleteName = await getAthleteName()
+  },
 };
 </script>
