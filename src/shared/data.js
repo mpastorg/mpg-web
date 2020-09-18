@@ -28,9 +28,29 @@ const getAthleteProfile = async function(){
 
 }
 
+const deleteEmail = async function(rowtableid){
+    await axios
+    .delete(data.url+"strava/del-email/"+rowtableid+"/", header)
+    .then(response => {
+        if (response.status==200)
+            return rowtableid;
+        else
+            return null;    
+    })
+    .catch((error) => {
+        localStorage.stravaUuid ='';
+        localStorage.athleteId ='';
+        console.error(error);
+        this.$router.push({name: 'Home'})
+        return null;
+    })
+}
+
+
 export const data ={
     getActivityTypes,
     getDestEmails,
     getAthleteProfile,
+    deleteEmail,
     url,
 };

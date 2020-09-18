@@ -15,6 +15,9 @@ const mutations = {
   },
   getDestEmails(state,destEmails){
     state.destEmails = destEmails;
+  }, 
+  deleteDestEmail(state,rowtableid){
+    state.destEmails = [...state.destEmails.filter(i=> i.id != rowtableid)];
   }
 
 };
@@ -26,7 +29,13 @@ const actions = {
   async getDestEmailsAction({commit}){
     const destEmails = await data.getDestEmails();
     commit('getDestEmails',destEmails);
+  }, 
+  async deleteDestEmailAction({commit},rowtableid){
+    const deletedEmailRowId = await data.deleteEmail(rowtableid);
+    commit('deleteDestEmail',deletedEmailRowId)
+
   }
+
 };
 const getters = {};
 const modules = {};

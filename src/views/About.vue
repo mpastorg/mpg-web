@@ -91,17 +91,8 @@
 				this.getAthleteEmails();
 			},
 			async deleteEmail(rowtableid){
-				//TODO it's not refreshing correctly after delete the email
-				await axios
-				.delete(data.url+"strava/del-email/"+rowtableid+"/", this.header)
-				.then(await this.getAthleteEmails())
-				.catch((error) => {
-					localStorage.stravaUuid ='';
-					localStorage.athleteId ='';
-					this.$router.push({name: 'Home'})					
-					throw error.response.data;
-				})
-
+				await this.$store.dispatch('deleteDestEmailAction',rowtableid);
+				this.getAthleteEmails();
 			}
 
 		},
