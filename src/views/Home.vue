@@ -46,7 +46,7 @@ function getAthleteId(){
 //TODO Refactor to centralize localStorage and control athleteID
 async function getAthleteName(){
     console.info("getAthName"+localStorage.athleteName)
-  if (localStorage.athleteName =='undefined' || localStorage.athleteName==''){
+  if (localStorage.athleteName ==undefined || localStorage.athleteName =='undefined' || localStorage.athleteName==''){
     console.info("go get athlete")
     const myLocalAthleteprofile = await data.getAthleteProfile();
     localStorage.athleteName = myLocalAthleteprofile.name;
