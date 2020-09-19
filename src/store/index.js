@@ -18,6 +18,9 @@ const mutations = {
   }, 
   deleteDestEmail(state,rowtableid){
     state.destEmails = [...state.destEmails.filter(i=> i.id != rowtableid)];
+  }, 
+  addDestEmail(state,destEmail){
+    state.destEmails.push(destEmail);
   }
 
 };
@@ -33,7 +36,11 @@ const actions = {
   async deleteDestEmailAction({commit},rowtableid){
     const deletedEmailRowId = await data.deleteEmail(rowtableid);
     commit('deleteDestEmail',deletedEmailRowId)
-
+  }, 
+  async addDestEmailAction({commit},destEmail){
+    const addedEmailRowId = await data.addEmail(destEmail);
+    if (addedEmailRowId != null)
+      commit('addDestEmail',destEmail)
   }
 
 };

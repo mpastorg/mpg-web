@@ -1,13 +1,13 @@
 <template>
 	<div class="about">
 	<button @click="showActivityTypes()">Show Activity types</button>
-	<ActivityTypes v-if="mybool" :listActivityTypes= "activityTypes" />
+	<ActivityTypes v-if="myShowActivities" :listActivityTypes= "activityTypes" />
 	<span>
 		<h1>List emails per athlete</h1>
 		<input type="input" id="idinput" v-model="message"/>
 		<!--<pre>### {{ info }} ###</pre>-->
 		<button @click="getAthleteEmails()">Get Athlete emails</button>
-		<div v-if="mybool2">
+		<div>
 			<br/>
 			<table align="center">
 				<tr v-for="email in destEmails" :key="email.rowtableid">
@@ -30,15 +30,15 @@
 				<td>Athlete Name: </td><td><span id="athleteName">TODO</span></td>		
 			</tr>
 			<tr>
-				<td>Dest email: </td><td><input type="text" id="destemail" v-model="myjobject.destemail"/></td>		
+				<td>Dest email: </td><td><input type="text" id="destemail" v-model="myDestEmail.destemail"/></td>		
 			</tr>
 			<tr>
-				<td>Dest name: </td><td><input type="text" id="destname" v-model="myjobject.destname"/></td>		
+				<td>Dest name: </td><td><input type="text" id="destname" v-model="myDestEmail.destname"/></td>		
 			</tr>
 			<tr>
 				<td>Activity:</td>
 				<td>
-					<select v-model="myjobject.activitytype">
+					<select v-model="myDestEmail.activitytype">
 						<option v-for="item in activityTypes" :key="item.rowtableid">
 						{{ item.activitytype}}
 						</option>
@@ -55,17 +55,14 @@
 <script>
 	import ActivityTypes from "@/components/activity-types"
 	import { mapState, mapActions } from 'vuex';
-	import { data} from '../shared';
-
-	const axios = require('axios').default;
 	export default {
 		name: "About",
 		components: {ActivityTypes},
 		data() {
 			return {
 				message: localStorage.athleteId,
-				myjobject: {
-					athleteid: this.message,
+				myDestEmail: {
+					athleteid: localStorage.athleteId,
 					destemail: "",
 					destname:"",
 					activitytype:"",
@@ -73,8 +70,7 @@
 
 				},
 				header: {headers: {'vueid' : localStorage.stravaUuid}},
-				mybool:true,
-				mybool2:false,
+				myShowActivities:true,
 				emails: []
 			};
 			
@@ -82,15 +78,16 @@
 		methods: {
 			...mapActions(['getActivityTypesAction','getDestEmailsAction']),
 			showActivityTypes(){
-				this.mybool = !this.mybool;
+				this.myShowActivities = !this.myShowActivities;
 			},
 			async getAthleteEmails(){
 				await this.$store.dispatch('getDestEmailsAction')
-				this.mybool2 = true;
 			},
 			async submitEmail(){
-				await axios
-				.post(data.url+"strava/activityemail",this.myjobject);
+				await this.$store.dispatch('addDestEmailAction', this.myDestEmail)
+				this.myDestEmail.destemail="";
+				this.myDestEmail.destname="";
+				this.myDestEmail.activitytype="";
 				this.getAthleteEmails();
 			},
 			async deleteEmail(rowtableid){
