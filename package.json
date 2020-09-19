@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "keycloak-js": "^11.0.2",
     "vue": "^2.6.11",
+    "vue-analytics": "^5.22.1",
     "vue-google-oauth2": "^1.5.4",
     "vue-keycloak-js": "^0.1.0",
     "vue-oidc-client": "^0.4.1",

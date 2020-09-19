@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import VueAnalytics from 'vue-analytics';
+
 //import {createOidcAuth, SignInType } from 'vue-oidc-client'
 
 
@@ -35,6 +37,9 @@ Vue.config.productionTip = false
 //   }
 // });
 
+Vue.use(VueAnalytics,{
+  id: 'UA-178423032-1'
+});
 
 new Vue({
   router,

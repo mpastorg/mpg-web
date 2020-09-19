@@ -24,7 +24,10 @@
 		<h2>Add email to athlete</h2>
 		<table align="center">
 			<tr>
-				<td>Athlete: </td><td><input type="input" id="athleteid" v-model="myjobject.athleteid"/></td>		
+				<td>Athlete ID: </td><td><span id="athleteid">{{message}}</span></td>		
+			</tr>
+			<tr>
+				<td>Athlete Name: </td><td><span id="athleteName">TODO</span></td>		
 			</tr>
 			<tr>
 				<td>Dest email: </td><td><input type="text" id="destemail" v-model="myjobject.destemail"/></td>		
@@ -87,7 +90,7 @@
 			},
 			async submitEmail(){
 				await axios
-				.post(data.url+"strava/activityemail",this.myjobject), this.header;
+				.post(data.url+"strava/activityemail",this.myjobject);
 				this.getAthleteEmails();
 			},
 			async deleteEmail(rowtableid){
