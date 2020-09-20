@@ -2,24 +2,6 @@
 	<div class="about">
 	<button @click="showActivityTypes()">Show Activity types</button>
 	<ActivityTypes v-if="myShowActivities" :listActivityTypes= "activityTypes" />
-	<span>
-		<h1>List emails per athlete</h1>
-		<input type="input" id="idinput" v-model="message"/>
-		<!--<pre>### {{ info }} ###</pre>-->
-		<button @click="getAthleteEmails()">Get Athlete emails</button>
-		<div>
-			<br/>
-			<table align="center">
-				<tr v-for="email in destEmails" :key="email.rowtableid">
-					<td>{{email.activitytype}}</td>
-					<td>{{ email.destemail}}</td>
-					<td>{{email.destname}}</td>
-					<td>{{email.approved}}</td>
-					<td><button @click="deleteEmail(email.rowtableid)">Delete email</button></td>
-				</tr>	
-			</table>
-		</div>
-	</span>
 	<div align="center">
 		<h2>Add email to athlete</h2>
 		<table align="center">
@@ -71,17 +53,13 @@
 				},
 				header: {headers: {'vueid' : localStorage.stravaUuid}},
 				myShowActivities:true,
-				emails: []
 			};
 			
 		},
 		methods: {
-			...mapActions(['getActivityTypesAction','getDestEmailsAction']),
+			...mapActions(['getActivityTypesAction']),
 			showActivityTypes(){
 				this.myShowActivities = !this.myShowActivities;
-			},
-			async getAthleteEmails(){
-				await this.$store.dispatch('getDestEmailsAction')
 			},
 			async submitEmail(){
 				await this.$store.dispatch('addDestEmailAction', this.myDestEmail)
@@ -90,10 +68,6 @@
 				this.myDestEmail.activitytype="";
 				this.getAthleteEmails();
 			},
-			async deleteEmail(rowtableid){
-				await this.$store.dispatch('deleteDestEmailAction',rowtableid);
-				this.getAthleteEmails();
-			}
 
 		},
 		async created () {

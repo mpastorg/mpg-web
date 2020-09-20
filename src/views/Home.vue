@@ -24,15 +24,17 @@
         uuid: {{stravaUuid}} <br/>
         athleteId: {{athleteId}}
       </span> <br/>
-      <span id="myurl">
-        url: {{checkUrl()}} <br/>
-      </span>
+      
+      <div v-if="isSignIn">
+        <destEmails/>
+      </div>
 	</div>
 </template>
 <script>
 import { uuid} from 'vue-uuid';
 import { data } from '../shared';
-//const axios = require('axios').default
+//import ActivityTypes from "@/components/activity-types"
+import destEmails from "@/components/dest-emails"
 
 function getStravaUuid(){
   if (!localStorage.stravaUuid){
@@ -40,6 +42,7 @@ function getStravaUuid(){
   }
   return localStorage.stravaUuid
 }
+
 function getAthleteId(){
   return localStorage.athleteId
 }
@@ -57,6 +60,7 @@ async function getAthleteName(){
 }
 export default {
   name: "Home",
+  components: {destEmails},
   props: {
     msg: String
   },
@@ -76,22 +80,45 @@ export default {
     localStorage.stravaUuid = ''
     localStorage.athleteName = ''
     localStorage.athleteEmail = ''
+    this.isSignIn = false
+    this.athleteId = getAthleteId()
+    this.stravaUuid = getStravaUuid()
+
 	},
     handleClickLogin() {
       console.info(data.getAthleteProfile());
 
   },
   checkUrl(){
-    console.info(this.$route.query)
     if (this.$route.query.mpgstate == this.stravaUuid){
+      console.info('checkurl:'+this.$route.query)
       localStorage.athleteId = this.$route.query.athlete;
       this.athleteId = localStorage.athleteId
+      this.isSignIn =true
+      this.$router.query=''
+
     }
-    return this.$route.query
+    //return this.$route.query
   }
 },
   async created() {
-    this.athleteName = await getAthleteName()
+    if (this.$route.query.mpgstate == this.stravaUuid){
+      console.info('checkurl:'+this.$route.query)
+      localStorage.athleteId = this.$route.query.athlete;
+      this.athleteId = localStorage.athleteId
+      this.isSignIn =true
+      let query = Object.assign({}, this.$route.query);
+      delete query.mpgstate;
+      delete query.athlete;
+      this.$router.replace({ query });
+    }
+
+    if (localStorage.athleteId==undefined || localStorage.athleteId =='undefined' || localStorage.athleteId=='')
+      this.isSignIn = false
+    else{
+      this.isSignIn = true
+      this.athleteName = await getAthleteName()
+    }
   },
 };
 </script>
