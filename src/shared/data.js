@@ -1,5 +1,6 @@
 import * as axios from 'axios';
 
+const strava_id = process.env.VUE_APP_STRAVA_ID;
 const url = process.env.VUE_APP_API_URL; 
 var header= {headers: {'vueid' : localStorage.stravaUuid}}
 				
@@ -63,9 +64,6 @@ const addEmail = async function(destEmail){
     })
 
 }
-
-
-
 export const data ={
     getActivityTypes,
     getDestEmails,
@@ -73,4 +71,5 @@ export const data ={
     deleteEmail,
     addEmail,
     url,
+    strava_id
 };
