@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    RELEASE = '0.4.pre'
+    RELEASE = '0.3'
     registry = "mpastorg/mpg-vuejs"
     registryCredential = 'dockerhub'
     dockerImage = ''

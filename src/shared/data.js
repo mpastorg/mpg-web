@@ -64,12 +64,30 @@ const addEmail = async function(destEmail){
     })
 
 }
+const addComments = async function(clientComments){
+    console.info("addcomments: "+data.url+"strava/comments/")
+    await axios
+    .post(data.url+"strava/comments/",clientComments)
+    .then(r => {
+        if (r.status == 200){
+            return r.status;
+        } else
+            return null;
+    })
+    .catch((error) => {
+        console.error(error);
+        this.$router.push({name: 'Home'})
+        return null;
+    })
+
+}
 export const data ={
     getActivityTypes,
     getDestEmails,
     getAthleteProfile,
     deleteEmail,
     addEmail,
+    addComments,
     url,
     strava_id
 };
