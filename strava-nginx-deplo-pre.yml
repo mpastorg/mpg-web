@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: strava-nginx-deplo-pre
+spec:
+   replicas: 1
+   selector:
+      matchLabels:
+         app: strava-nginx-deplo-pre
+   template:
+     metadata:
+        labels:
+          app: strava-nginx-deplo-pre
+     spec:
+        containers:
+        - name: mpg-vue
+          image: mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 443
+            containerPort: 80
+          volumeMounts:
+          - name: cm-app-nginx-vol
+            mountPath: "/etc/nginx/conf.d/"
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 50m
+              memory: 512Mi
+        nodeSelector:
+          kubernetes.io/arch: amd64
+        volumes:
+          - name: cm-app-nginx-vol
+            configMap:
+              name: cm-app-nginx-pre-k2c748db6b
+              items:
+              - key: default.conf
+                path: default.conf
