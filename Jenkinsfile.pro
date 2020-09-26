@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    RELEASE = '0.3'
+    RELEASE = '0.4.pro'
     registry = "mpastorg/mpg-vuejs"
     registryCredential = 'dockerhub'
     dockerImage = ''
@@ -12,7 +12,7 @@ pipeline {
          * docker build on the command line */
       steps {
         script {
-          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER")
+          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER","./Dockerfile.pro")
         }
       }
     }
@@ -25,6 +25,16 @@ pipeline {
         }
       }
     }
+  /*  stage('Deploy on kubernetes') {
+      steps {
+          kubernetesDeploy(
+              kubeconfigId: '1c99e9a6-3159-41f1-a7d3-2e4dbbe13455',
+              configs: 'strava-nginx-deplo-pro.yml',
+              enableConfigSubstitution: true
+          )
+      }
+    }
+  */
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER"
