@@ -9,7 +9,6 @@
 		<h1>
 			<a v-bind:href="url_strava_auth">Go to Strava.com to authorize this app</a>
 		</h1>
-    <p> Que pasa {{url_strava_auth}}</p>
 
 		</div>
       <br/>
