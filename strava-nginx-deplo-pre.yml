@@ -33,7 +33,7 @@ spec:
         volumes:
           - name: cm-app-nginx-vol
             configMap:
-              name: cm-app-nginx-pre-k2c748db6b
+              name: cm-app-nginx-pre-7k222k6t9g
               items:
               - key: default.conf
                 path: default.conf

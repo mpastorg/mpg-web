@@ -6,9 +6,13 @@
     </div>
     <button v-if="isSignIn" @click="cleanstravalogin"> Log out</button>
 		<div v-else>
-		<h1>
-			<a v-bind:href="url_strava_auth">Go to Strava.com to authorize this app</a>
-		</h1>
+      <p> Introduce your email: 
+        <input type="text" id="athleteEmail" v-model="athleteEmail"/>
+      </p>
+      <h1>
+        Go to Strava.com to authorize this app
+      </h1>
+      <button @click="gostrava">Go strava</button>
 
 		</div>
       <br/>
@@ -35,12 +39,15 @@ function getStravaUuid(){
   }
   return localStorage.stravaUuid
 }
-function getUrlStrava(){
+
+/*function getUrlStrava(){
   const url1='https://www.strava.com/api/v3/oauth/authorize?client_id='+ data.strava_id
   + '&scope=profile:read_all,activity:read_all&redirect_uri='
-  + data.url+'strava/auth-mpg/&response_type=code&approval_prompt=auto&state='+getStravaUuid()
+  + data.url+'strava/auth-mpg/&response_type=code&approval_prompt=auto&state='
+  +getStravaUuid()+data.athleteEmail
+  console.info(url1)
   return url1
-}
+}*/
 //TODO Refactor to centralize localStorage and control athleteID
 async function getAthleteName(){
     console.info("getAthName"+localStorage.athleteName)
@@ -61,7 +68,11 @@ export default {
   },
   data() {
     return {
-      url_strava_auth: getUrlStrava(),
+      athleteEmail: "",
+      url_strava_auth: 'https://www.strava.com/api/v3/oauth/authorize?client_id='+ data.strava_id
+  + '&scope=profile:read_all,activity:read_all&redirect_uri='
+  + data.url+'strava/auth-mpg/&response_type=code&approval_prompt=auto&state='
+  +getStravaUuid(),
       stravaUuid: getStravaUuid(),
       athleteId: localStorage.athleteId,
       athleteName: '',
@@ -81,10 +92,20 @@ export default {
     this.athleteId = ''
     this.stravaUuid = getStravaUuid()
 
-	}
+  },
+  gostrava(){
+    console.info(this.url_strava_auth+this.athleteEmail)
+    if (this.athleteEmail=="" || this.athleteEmail == undefined){
+      alert("Introduce your email")
+
+    } else{
+      window.location.href=this.url_strava_auth+this.athleteEmail
+    }
+
+  }
 },
   async created() {
-    if (this.$route.query.mpgstate == this.stravaUuid){
+    if (this.$route.query.mpgstate.substring(0,36) == this.stravaUuid){
       console.info('checkurl:'+this.$route.query)
       localStorage.athleteId = this.$route.query.athlete;
       this.athleteId = localStorage.athleteId
