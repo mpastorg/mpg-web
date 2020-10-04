@@ -105,7 +105,8 @@ export default {
   }
 },
   async created() {
-    if (this.$route.query.mpgstate.substring(0,36) == this.stravaUuid){
+    if (this.$route.query.mpgstate != undefined &&
+    this.$route.query.mpgstate.substring(0,36) == this.stravaUuid){
       console.info('checkurl:'+this.$route.query)
       localStorage.athleteId = this.$route.query.athlete;
       this.athleteId = localStorage.athleteId
