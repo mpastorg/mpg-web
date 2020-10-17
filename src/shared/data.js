@@ -70,6 +70,8 @@ const addEmail = async function(destEmail){
 }
 const addComments = async function(clientComments){
     console.info("addcomments: "+url+"strava/comments/")
+    console.info("lconfig.config.VUE_APP_API_URL="+lconfig.config.VUE_APP_API_URL)
+    console.info("lconfig.config="+lconfig.config)
     await axios
     .post(url+"strava/comments/",clientComments)
     .then(r => {
