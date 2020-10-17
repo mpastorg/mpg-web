@@ -23,6 +23,7 @@ const getDestEmails = async function() {
 }
 
 const getAthleteProfile = async function(){
+    console.info('entering getAthleteProfile:' + url)
     const response = await axios
     .get(url+'strava/athlete/', header);
     console.info(response.data);
@@ -31,6 +32,7 @@ const getAthleteProfile = async function(){
 }
 
 const deleteEmail = async function(rowtableid){
+    console.info('entering getDeleteEmail:' + url)
     await axios
     .delete(url+"strava/del-email/"+rowtableid+"/", header)
     .then(response => {
@@ -48,6 +50,7 @@ const deleteEmail = async function(rowtableid){
     })
 }
 const addEmail = async function(destEmail){
+    console.info('entering addEmail:' + url)
     await axios
     .post(url+"strava/activityemail",destEmail)
     .then(r => {
