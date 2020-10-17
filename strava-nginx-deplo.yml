@@ -1,16 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: strava-nginx-deplo-pro
+    name: strava-nginx-deplo
+    namespace: pre
 spec:
    replicas: 1
    selector:
       matchLabels:
-         app: strava-nginx-deplo-pro
+         app: strava-nginx-deplo
    template:
      metadata:
         labels:
-          app: strava-nginx-deplo-pro
+          app: strava-nginx-deplo
      spec:
         containers:
         - name: mpg-vue
@@ -22,6 +23,8 @@ spec:
           volumeMounts:
           - name: cm-app-nginx-vol
             mountPath: "/etc/nginx/conf.d/"
+          - name: cm-config-vue
+            mountPath: "/usr/share/nginx/html/"
           resources:
             limits:
               cpu: 500m
@@ -33,31 +36,39 @@ spec:
         volumes:
           - name: cm-app-nginx-vol
             configMap:
-              name: cm-app-nginx-pro-8t77b9fkg4
+              name: cm-app-nginx-7k222k6t9g
               items:
               - key: default.conf
                 path: default.conf
+          - name: cm-config-vue
+            configMap:
+              name: cm-config-vuejs-hbbhm282m4
+              items:
+              - key: config.js
+                path: config.js
+    
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    run: strava-nginx-svc-pro
-  name: strava-nginx-svc-pro
+    run: strava-nginx-svc
+  name: strava-nginx-svc
+  namespace: pre
 spec:
   ports:
   ports:
   - name: http
     port: 80
-    nodePort: 32509
+    nodePort: $HTTP_PORT
     protocol: TCP
     targetPort: 80
   - name: https
     port: 443
-    nodePort: 32506
+    nodePort: $HTTPS_PORT
     protocol: TCP
     targetPort: 443
   selector:
-    app: strava-nginx-deplo-pro
+    app: strava-nginx-deplo
   sessionAffinity: None
   type: NodePort
