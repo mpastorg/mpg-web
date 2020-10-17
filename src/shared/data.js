@@ -1,7 +1,8 @@
 import * as axios from 'axios';
+import * as config from '../config';
 
-const strava_id = process.env.VUE_APP_STRAVA_ID;
-const url = process.env.VUE_APP_API_URL; 
+const strava_id = config.VUE_APP_STRAVA_ID || process.env.VUE_APP_STRAVA_ID;
+const url = config.VUE_APP_API_URL || process.env.VUE_APP_API_URL; 
 var header= {headers: {'vueid' : localStorage.stravaUuid}}
 				
 

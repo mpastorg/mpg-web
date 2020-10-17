@@ -1,7 +1,8 @@
 pipeline {
   agent any
   environment {
-    RELEASE = '0.4.pro'
+    ENV = 'pro'
+    RELEASE = '0.4'
     registry = "mpastorg/mpg-vuejs"
     registryCredential = 'dockerhub'
     dockerImage = ''
@@ -12,7 +13,7 @@ pipeline {
          * docker build on the command line */
       steps {
         script {
-          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER","-f ./dockerfile-pro/Dockerfile .")
+          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER","-f ./dockerfile-pro/Dockerfile .")
         }
       }
     }
@@ -37,7 +38,7 @@ pipeline {
   */
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER"
+        sh "docker rmi mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER"
       }
     }  
   }
