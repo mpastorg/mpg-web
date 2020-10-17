@@ -13,7 +13,7 @@ pipeline {
          * docker build on the command line */
       steps {
         script {
-          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER")
+          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER")
         }
       }
     }
@@ -38,7 +38,7 @@ pipeline {
   */
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER"
+        sh "docker rmi mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER"
       }
     }  
   }
