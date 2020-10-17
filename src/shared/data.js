@@ -52,7 +52,7 @@ const deleteEmail = async function(rowtableid){
 const addEmail = async function(destEmail){
     console.info('entering addEmail:' + url)
     await axios
-    .post(url+"strava/activityemail",destEmail)
+    .post(url+"strava/activityemail/",destEmail)
     .then(r => {
         if (r.status == 200){
             return destEmail.rowtableid;
