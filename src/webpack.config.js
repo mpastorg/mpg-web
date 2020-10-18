@@ -1,21 +1,7 @@
-const path = require("path");
+var webpack = require('webpack');
+
 module.exports = {
-  publicPath: '/',
-  configureWebpack: {
-    module: {
-      rules: [
-        {
-          test: /config.*config\.js$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'config.js'
-              },
-            }
-          ]
-        }
-      ]
-    }
+  externals: {
+    './config': 'config'
   }
-}
+};

@@ -1,8 +1,6 @@
 # build stage
 FROM node:lts-alpine as build-pre-stage
 WORKDIR /app
-RUN ls
-RUN rm -rf src/config.js
 COPY package*.json ./
 RUN npm install
 COPY . .
