@@ -49,6 +49,26 @@ const deleteEmail = async function(rowtableid){
         return null;
     })
 }
+//reSendDestEmailAction
+const reSendDestEmailAction = async function(rowtableid){
+    console.info('entering reSendDestEmailAction:' + url)
+    await axios
+    .get(url+"strava/resendemail/"+rowtableid+"/", header)
+    .then(response => {
+        if (response.status==200)
+            return rowtableid;
+        else
+            return null;    
+    })
+    .catch((error) => {
+        // localStorage.stravaUuid ='';
+        // localStorage.athleteId ='';
+        console.error(error);
+        this.$router.push({name: 'Home'})
+        return null;
+    })
+}
+
 const addEmail = async function(destEmail){
     console.info('entering addEmail:' + url)
     await axios
@@ -92,6 +112,7 @@ export const data ={
     getDestEmails,
     getAthleteProfile,
     deleteEmail,
+    reSendDestEmailAction,
     addEmail,
     addComments,
     url,

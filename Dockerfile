@@ -4,10 +4,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
+RUN npm run pre
 
 # production stage
-FROM nginx:stable-alpine as production-stage
+FROM nginx:stable-alpine as pre-stage
 COPY nginx/default.conf /etc/nginx/conf.d/
 COPY cert/api_madastur_com.crt /etc/nginx/
 COPY cert/api_madastur_com.key /etc/nginx/

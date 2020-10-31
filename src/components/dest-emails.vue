@@ -9,7 +9,8 @@
 					<td>{{ email.destemail}}</td>
 					<td>{{email.destname}}</td>
 					<td>{{email.approved}}</td>
-					<td><button @click="deleteEmail(email.rowtableid)">Delete email</button></td>
+					<td><button @click="deleteEmail(email.rowtableid)">Delete email</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button v-if="email.approved === false"  @click="reSendEmail(email.rowtableid)">Re-Send email</button></td>
 				</tr>	
 			</table>
 		</div>  
@@ -42,6 +43,10 @@ export default {
         async deleteEmail(rowtableid){
             await this.$store.dispatch('deleteDestEmailAction',rowtableid);
             this.getAthleteEmails();
+        },
+        async reSendEmail(rowtableid){
+            await this.$store.dispatch('reSendDestEmailAction',rowtableid);
+            
         }
     },
     async created () {

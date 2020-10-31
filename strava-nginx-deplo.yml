@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
     name: strava-nginx-deplo
-    namespace: pre
+    namespace: MPGENV
 spec:
    replicas: 1
    selector:
@@ -15,7 +15,7 @@ spec:
      spec:
         containers:
         - name: mpg-vue
-          image: mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER
+          image: mpastorg/mpg-vuejs:MPGRELEASE.MPGENV.MPGBUILD_NUMBER
           imagePullPolicy: Always
           ports:
           - containerPort: 443
@@ -37,13 +37,13 @@ spec:
         volumes:
           - name: cm-app-nginx-vol
             configMap:
-              name: cm-app-nginx-7k222k6t9g
+              name: cm-app-nginx-MPGCONFIGNGINX
               items:
               - key: default.conf
                 path: default.conf
           - name: cm-config-vue
             configMap:
-              name: cm-config-vuejs-hbbhm282m4
+              name: cm-config-vuejs-MPGCONFIGVUE
               
 ---
 apiVersion: v1
@@ -52,7 +52,7 @@ metadata:
   labels:
     run: strava-nginx-svc
   name: strava-nginx-svc
-  namespace: pre
+  namespace: MPGENV
 spec:
   ports:
   ports:
