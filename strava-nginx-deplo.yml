@@ -12,6 +12,7 @@ spec:
      metadata:
         labels:
           app: strava-nginx-deplo
+          release: MPGRELEASE.MPGENV.MPGBUILD_NUMBER
      spec:
         containers:
         - name: mpg-vue
@@ -26,7 +27,7 @@ spec:
           - name: cm-config-vue
             mountPath: "/usr/share/nginx/html/config.js"
             subPath: "config.js"
-        resources:
+          resources:
             limits:
               cpu: 500m
             requests:
