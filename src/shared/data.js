@@ -1,8 +1,7 @@
 import * as axios from 'axios';
-import * as lconfig from '../config';
 
-const strava_id = lconfig.config.VUE_APP_STRAVA_ID || process.env.VUE_APP_STRAVA_ID;
-const url = lconfig.config.VUE_APP_API_URL || process.env.VUE_APP_API_URL; 
+const strava_id = process.env.VUE_APP_STRAVA_ID;
+const url = process.env.VUE_APP_API_URL; 
 var header= {headers: {'vueid' : localStorage.stravaUuid}}
 				
 
@@ -90,8 +89,6 @@ const addEmail = async function(destEmail){
 }
 const addComments = async function(clientComments){
     console.info("addcomments: "+url+"strava/comments/")
-    console.info("lconfig.config.VUE_APP_API_URL="+lconfig.config.VUE_APP_API_URL)
-    console.info("lconfig.config="+lconfig.config)
     await axios
     .post(url+"strava/comments/",clientComments)
     .then(r => {
