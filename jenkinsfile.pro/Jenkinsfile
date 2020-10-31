@@ -2,8 +2,8 @@ pipeline {
   agent any
   environment {
     ENV = 'pro'
-    MPGHTTP_PORT = '32509'
-    MPGHTTPS_PORT = '32506'
+    MPGHTTP_PORT = 32509
+    MPGHTTPS_PORT = 32506
     RELEASE = '0.4'
     registry = "mpastorg/mpg-vuejs"
     registryCredential = 'dockerhub'
