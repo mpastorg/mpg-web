@@ -59,12 +59,12 @@ spec:
   ports:
   - name: http
     port: 80
-    nodePort: $HTTP_PORT
+    nodePort: MPGHTTP_PORT
     protocol: TCP
     targetPort: 80
   - name: https
     port: 443
-    nodePort: $HTTPS_PORT
+    nodePort: MPGHTTPS_PORT
     protocol: TCP
     targetPort: 443
   selector:
