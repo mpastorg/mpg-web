@@ -32,8 +32,8 @@ pipeline {
     }
     stage('prepare for kubernetes') {
       steps{
-        sh "sed 's/MPGENV/pre/' strava-nginx-deplo.yml > deplo_1.yml"
         sh "sed 's/MPGRELEASE.MPGENV.MPGBUILD_NUMBER/$RELEASE.$ENV.$BUILD_NUMBER/' deplo_1.yml > deplo_1b.yml"
+        sh "sed 's/MPGENV/pre/' strava-nginx-deplo.yml > deplo_1.yml"
         sh "sed 's/MPGCONFIGNGINX/$MPGCONFIGNGINX/' deplo_1b.yml > deplo_2.yml"
         sh "sed 's/MPGCONFIGVUE/$MPGCONFIGVUE/' deplo_2.yml > deplo_2b.yml"
         sh "sed 's/MPGHTTP_PORT/$MPGHTTP_PORT/' deplo_2b.yml > deplo_2c.yml"
@@ -61,7 +61,7 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi mpastorg/mpg-vuejs:$RELEASE.$BUILD_NUMBER"
+        sh "docker rmi mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER"
       }
     }  
   }
