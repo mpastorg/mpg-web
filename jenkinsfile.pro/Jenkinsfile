@@ -17,7 +17,7 @@ pipeline {
          * docker build on the command line */
       steps {
         script {
-          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER", "./dockerfile-pro/")
+          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER", "-f ./dockerfile-pro/Dockerfile .")
         }
       }
     }
