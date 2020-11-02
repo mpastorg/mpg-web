@@ -22,9 +22,6 @@ const mutations = {
   addDestEmail(state,destEmail){
     state.destEmails.push(destEmail);
   }, 
-  reSendDestEmail(state,destEmail){
-    state.destEmails.push(destEmail);
-  }
 
 };
 const actions = {
@@ -41,8 +38,9 @@ const actions = {
     commit('deleteDestEmail',deletedEmailRowId)
   }, 
   async reSendDestEmailAction({commit},rowtableid){
-    const reSendEmailRowId = await data.reSendDestEmailAction(rowtableid);
-    commit('reSendDestEmail',reSendEmailRowId)
+    await data.reSendDestEmailAction(rowtableid);
+    const destEmails = await data.getDestEmails();
+    commit('getDestEmails',destEmails);
   }, 
   async addDestEmailAction({commit},destEmail){
     const addedEmailRowId = await data.addEmail(destEmail);
