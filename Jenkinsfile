@@ -8,7 +8,7 @@ pipeline {
     registry = "mpastorg/mpg-vuejs"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    MPGCONFIGNGINX = '7fdg5kmmhd'
+    MPGCONFIGNGINX = 'g89g4mf7dg'
     MPGCONFIGVUE = '9kgc8t6g4m'
   }
   stages {
