@@ -8,7 +8,7 @@ pipeline {
     registry = "mpastorg/mpg-vuejs"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    MPGCONFIGNGINX = 'g89g4mf7dg'
+    MPGCONFIGNGINX = 'c6655974kg'
     MPGCONFIGVUE = '9kgc8t6g4m'
   }
   stages {
@@ -59,10 +59,10 @@ pipeline {
         }
       }
     }
-    stage('Remove Unused docker image') {
+    /*stage('Remove Unused docker image') {
       steps{
         sh "docker rmi mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER"
       }
-    }  
+    }*/  
   }
 }
