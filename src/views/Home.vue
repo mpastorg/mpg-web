@@ -100,6 +100,7 @@ export default {
 
     } else{
       window.location.href=this.url_strava_auth+this.athleteEmail
+      //https://www.strava.com/api/v3/oauth/authorize?client_id=48995&scope=profile:read_all,activity:read_all&redirect_uri=https://api.madastur.com/strava/auth-mpg/&response_type=code&approval_prompt=auto&state=ed3fc143-e410-4e45-998f-c58618b98c28email@email.com
     }
 
   }
