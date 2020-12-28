@@ -12,7 +12,7 @@
 			<tbody>
 			<tr>
 				<td class="tg-0lax">2020-12-28</td>
-				<td class="tg-onff">Doc for micro-service Auth:</td>
+				<td class="tg-onff">This is your starting point. Doc for micro-service Auth:</td>
 				<td class="tg-7h26"><a href="doc-auth/swagger-ui/">doc-auth/swagger-ui/</a></td>
 			</tr>
 			<tr>
