@@ -8,8 +8,6 @@ pipeline {
     registry = "mpastorg/mpg-vuejs"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    MPGCONFIGNGINX = 'c6655974kg'
-    MPGCONFIGVUE = '9kgc8t6g4m'
   }
   stages {
     stage('Build image') {
@@ -34,9 +32,7 @@ pipeline {
       steps{
         sh "sed 's/MPGRELEASE.MPGENV.MPGBUILD_NUMBER/$RELEASE.$ENV.$BUILD_NUMBER/' strava-nginx-deplo.yml > deplo_1.yml"
         sh "sed 's/MPGENV/pre/' deplo_1.yml > deplo_1b.yml"
-        sh "sed 's/MPGCONFIGNGINX/$MPGCONFIGNGINX/' deplo_1b.yml > deplo_2.yml"
-        sh "sed 's/MPGCONFIGVUE/$MPGCONFIGVUE/' deplo_2.yml > deplo_2b.yml"
-        sh "sed 's/MPGHTTP_PORT/$MPGHTTP_PORT/' deplo_2b.yml > deplo_2c.yml"
+        sh "sed 's/MPGHTTP_PORT/$MPGHTTP_PORT/' deplo_1b.yml > deplo_2c.yml"
         sh "sed 's/MPGHTTPS_PORT/$MPGHTTPS_PORT/' deplo_2c.yml > deplo_2d.yml"
       }
     }
@@ -59,10 +55,5 @@ pipeline {
         }
       }
     }
-    /*stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER"
-      }
-    }*/  
   }
 }

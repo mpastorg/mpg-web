@@ -38,13 +38,13 @@ spec:
         volumes:
           - name: cm-app-nginx-vol
             configMap:
-              name: cm-app-nginx-MPGCONFIGNGINX
+              name: cm-app-nginx
               items:
               - key: default.conf
                 path: default.conf
           - name: cm-config-vue
             configMap:
-              name: cm-config-vuejs-MPGCONFIGVUE
+              name: cm-config-vuejs
               
 ---
 apiVersion: v1
