@@ -24,6 +24,11 @@ Vue.use(VueRouter)
     name: 'API Doc',
     component: Doc
   }
+  ,{
+    path: '/idealista',
+    name: 'Madrid Casa',
+    component: () => import(/* webpackChunkName: "idealista" */ '../views/Idealista.vue')
+  }
 ]
 
 const router = new VueRouter({

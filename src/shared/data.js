@@ -104,6 +104,14 @@ const addComments = async function(clientComments){
     })
 
 }
+const addHome = async function(strhome){
+    console.info("addhome: "+url+"idealista/")
+    const response = await axios
+    .post(url+"idealista/",strhome)
+    console.info(response.data);
+    return response.data;
+
+}
 export const data ={
     getActivityTypes,
     getDestEmails,
@@ -112,6 +120,7 @@ export const data ={
     reSendDestEmailAction,
     addEmail,
     addComments,
+    addHome,
     url,
     strava_id
 };
