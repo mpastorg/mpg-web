@@ -9,8 +9,8 @@ RUN npm run build
 # production stage
 FROM nginx:stable-alpine as production-stage
 COPY nginx/default.conf /etc/nginx/conf.d/
-COPY cert/api_madastur_com.crt /etc/nginx/
-COPY cert/api_madastur_com.key /etc/nginx/
+COPY cert/star_madastur_com.crt /etc/nginx/
+COPY cert/_.madastur.com.key /etc/nginx/
 COPY --from=build-stage /app/dist /usr/share/nginx/html/
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
