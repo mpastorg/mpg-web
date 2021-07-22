@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<img src="../assets/logo.jpg">
+		<img src="../assets/logo_madastur.png">
     <div>
       Hello {{athleteName}}
     </div>
