@@ -28,3 +28,5 @@ docker build -t mpastorg/mpg-vuejs:0.2.3 .
 
 ###
 docker push mpastorg/mpg-vuejs:0.2.3
+
+This deployment includes also https://github.com/mpastorg/react-activity
