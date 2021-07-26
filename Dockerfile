@@ -31,7 +31,8 @@ FROM nginx:stable-alpine as pre-stage
 COPY nginx/default.conf /etc/nginx/conf.d/
 COPY cert/api_madastur_com.crt /etc/nginx/
 COPY cert/api_madastur_com.key /etc/nginx/
-COPY --from=build-pre-stage /app/dist /usr/share/nginx/html/
+RUN mkdir /usr/share/nginx/html/vue/
+COPY --from=build-pre-stage /app/dist /usr/share/nginx/html/vue/
 
 
 # deploy react-application here 
