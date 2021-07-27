@@ -15,8 +15,7 @@ pipeline {
          * docker build on the command line */
       steps {
         script {
-          withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERGIT'
-            , passwordVariable: 'PASSGIT')])
+          withCredentials([string(credentialsId: 'github_token', variable: 'PASSGIT')])
           {
             dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER",
               "--build-arg SSH_PRIVATE_KEY=$PASSGIT .")
