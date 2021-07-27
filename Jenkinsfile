@@ -15,10 +15,10 @@ pipeline {
          * docker build on the command line */
       steps {
         script {
-          withCredentials([string(credentialsId: 'github_token', variable: 'PASSGIT')])
+          withCredentials([string(credentialsId: 'personal_token', variable: 'PASS_GIT')])
           {
             dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER",
-              "--build-arg SSH_PRIVATE_KEY=$PASSGIT .")
+              "--build-arg SSH_PRIVATE_KEY=$PASS_GIT .")
           }
         }
       }
