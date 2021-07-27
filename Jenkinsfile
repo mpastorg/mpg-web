@@ -13,11 +13,11 @@ pipeline {
     stage('Build pwd') {
       steps {
         script {
-          withCredentials([usernamePassword(credentialsId: 'personal_token', usernameVariable: 'U'
-            , passwordVariable: 'PASS_GIT')])
+          withCredentials([usernamePassword(credentialsId: 'personal_token', usernameVariable: 'USERNAME'
+            , passwordVariable: 'PASSWORD')])
             {
-            mypwd = "$PASS_GIT"
-          }
+            mypwd = "$PASSWORD"
+            }
         }
       }
     }
