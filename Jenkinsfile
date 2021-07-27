@@ -18,7 +18,7 @@ pipeline {
           withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERGIT'
             , passwordVariable: 'PASSGIT')])
           {
-            dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER"
+            dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER",
               "--build-arg SSH_PRIVATE_KEY=$PASSGIT .")
           }
         }
