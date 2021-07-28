@@ -18,7 +18,9 @@ WORKDIR /app2
 RUN apk update
 RUN apk add git
 
-RUN git clone https://github.com/mpastorg/react-activity /app2
+ARG SSH_PRIVATE_KEY
+
+RUN git clone https://mpastorg:$SSH_PRIVATE_KEY@github.com/mpastorg/react-activity /app2
 
 RUN npm install
 
