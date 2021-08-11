@@ -10,7 +10,7 @@
         <input type="text" id="athleteEmail" v-model="athleteEmail"/>
       </p>
       <h1>
-        Go to Strava.com to authorize this app
+        Go to Strava.com to authorize this app.
       </h1>
       <button @click="gostrava">Go strava</button>
 
