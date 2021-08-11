@@ -7,7 +7,7 @@
                         <button @click="getAthleteEmails()">Get Athlete emails</button>
                     </td>
                     <td>
-                        <a href="https://react.madastur.com/strava/activities/{{localStorage.athleteId}}"> Go to list of Activities</a>
+                        <a :href="'https://react.madastur.com/strava/activities/'+localStorage.athleteId"> Go to list of Activities</a>
                     </td>
                 </tr>
             </tbody>
