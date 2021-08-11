@@ -10,12 +10,24 @@ pipeline {
     dockerImage = ''
   }
   stages {
+    stage('Build pwd') {
+      steps {
+        script {
+          withCredentials([usernamePassword(credentialsId: 'personal_token', usernameVariable: 'USERNAME'
+            , passwordVariable: 'PASSWORD')])
+            {
+            mypwd = "$PASSWORD"
+            }
+        }
+      }
+    }
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
       steps {
         script {
-          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER")
+            dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER",
+              "--build-arg SSH_PRIVATE_KEY=$mypwd .")
         }
       }
     }
