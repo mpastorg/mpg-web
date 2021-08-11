@@ -1,6 +1,17 @@
 <template>    
     <div>
-		<button @click="getAthleteEmails()">Get Athlete emails</button>
+		<table>
+            <tbody>
+                <tr>
+                    <td>
+                        <button @click="getAthleteEmails()">Get Athlete emails</button>
+                    </td>
+                    <td>
+                        <a href="https://react.madastur.com/strava/activities/{{localStorage.athleteId}}"> Go to list of Activities</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 		<div>
 			<br/>
 			<table align="center">
