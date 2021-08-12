@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<img src="../assets/logo192.png">
+		<img src="../assets/logo.jpg">
     <div>
       Hello {{athleteName}}
     </div>

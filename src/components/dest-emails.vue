@@ -1,5 +1,6 @@
 <template>    
     <div>
+        <div>
 		<table>
             <tbody>
                 <tr>
@@ -12,6 +13,7 @@
                 </tr>
             </tbody>
         </table>
+        </div>
 		<div>
 			<br/>
 			<table align="center">
