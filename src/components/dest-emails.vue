@@ -1,6 +1,21 @@
 <template>    
     <div>
-		<button @click="getAthleteEmails()">Get Athlete emails</button>
+        <center>
+        <div>
+		<table>
+            <tbody>
+                <tr>
+                    <td>
+                        <button @click="getAthleteEmails()">Get Athlete emails</button>
+                    </td>
+                    <td>
+                        <a :href="'https://react.madastur.com/strava/activities/'+tempId"> Go to list of Activities</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        </center>
 		<div>
 			<br/>
 			<table align="center">
@@ -31,6 +46,7 @@ export default {
                 approved:false
 
             },
+            tempId: localStorage.athleteId,
             emails: []
         };
         
