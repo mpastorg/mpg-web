@@ -24,6 +24,12 @@
         <br/>
         <addEmail/>
       </div>
+      <br/>
+      <div>
+        <center>Send a few Satoshis to @mpastorg to test your wallet:<br/>
+          <img src="https://api.madastur.com/qr/"/>
+        </center>
+      </div>
 	</div>
 </template>
 <script>
