@@ -27,7 +27,7 @@
       <br/>
       <div>
         <center>Send a few Satoshis to @mpastorg to test your wallet:<br/>
-          <img src="https://api.madastur.com/qr/"/>
+          <vue-qr :text="contentQr" :callback="test" qid="testid"></vue-qr>
         </center>
       </div>
 	</div>
@@ -38,6 +38,7 @@ import { data } from '../shared';
 //import ActivityTypes from "@/components/activity-types"
 import addEmail from "@/components/add-email"
 import destEmails from "@/components/dest-emails"
+import VueQr from 'vue-qr'
 
 function getStravaUuid(){
   if (!localStorage.stravaUuid){
@@ -68,7 +69,7 @@ async function getAthleteName(){
 }
 export default {
   name: "Home",
-  components: {destEmails,addEmail},
+  components: {destEmails,addEmail,VueQr},
   props: {
     msg: String
   },
@@ -85,9 +86,14 @@ export default {
       isInit: false,
       isSignIn: false,
       loginresponse: "",
+      contentQr: "",
     };
   },
   methods: {
+  test(dataUrl,id){
+            console.log(dataUrl, id)
+            
+        },
   cleanstravalogin(){
     localStorage.athleteId = ''
     localStorage.stravaUuid = ''
@@ -129,6 +135,7 @@ export default {
       this.isSignIn = true
       this.athleteName = await getAthleteName()
     }
+    this.contentQr="lnurl1dp68gurn8ghj7ctsdyhx6ctyv9ehgatj9e3k7mf0d3hz7mrww4exc0m385enqwp58qmnwdfn8pjkyvp5xd3k2v34vymnzv3jxuurqdfjv33rjvmxx3skvvryvsckxc3jvvcrxc34xvmnxcejx3nrwdmx89jrqveschk2z9"
   },
 };
 </script>
