@@ -3,7 +3,12 @@ FROM node:16-alpine as build-pre-stage
 RUN mkdir /app
 WORKDIR /app
 COPY package.json /app
-RUN npm install
+RUN apk add --no-cache --virtual .gyp \
+        python \
+        make \
+        g++ \
+    && npm install \
+    && apk del .gyp
 COPY . /app
 RUN npm run pre
 
