@@ -3,7 +3,17 @@ FROM node:16-alpine as build-stage
 RUN mkdir /app
 WORKDIR /app
 COPY package.json /app
-RUN npm install
+RUN npm install -g node-pre-gyp
+RUN apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev
+RUN apk add --update --repository http://dl-3.alpinelinux.org/alpine/edge/testing libmount ttf-dejavu ttf-droid ttf-freefont ttf-liberation fontconfig
+
+RUN apk add --no-cache --virtual .gyp \
+        python3 \
+        make \
+        g++ \
+    && npm install canvas --build-from-source\
+    && npm install \
+    && apk del .gyp
 COPY . /app
 RUN npm run build
 
