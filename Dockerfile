@@ -3,6 +3,8 @@ FROM node:16-alpine as build-pre-stage
 RUN mkdir /app
 WORKDIR /app
 COPY package.json /app
+RUN npm install node-pre-gyp
+
 RUN apk add --no-cache --virtual .gyp \
         python3 \
         make \
