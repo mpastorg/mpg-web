@@ -57,15 +57,17 @@ function getStravaUuid(){
 }*/
 //TODO Refactor to centralize localStorage and control athleteID
 async function getAthleteName(){
-    console.info("getAthName"+localStorage.athleteName)
+  let myLocalAthleteprofile; 
+  console.info("getAthName"+localStorage.athleteName)
   if (localStorage.athleteName ==undefined || localStorage.athleteName =='undefined' || localStorage.athleteName==''){
     console.info("go get athlete")
-    const myLocalAthleteprofile = await data.getAthleteProfile();
+    myLocalAthleteprofile = await data.getAthleteProfile();
     localStorage.athleteName = myLocalAthleteprofile.name;
     localStorage.athleteEmail = myLocalAthleteprofile.email;
+    localStorage.userName = myLocalAthleteprofile.username;
   }
     console.info("getAthNamedespues"+localStorage.athleteName)
-    return localStorage.athleteName
+    return myLocalAthleteprofile;
 }
 export default {
   name: "Home",
@@ -83,6 +85,7 @@ export default {
       stravaUuid: getStravaUuid(),
       athleteId: localStorage.athleteId,
       athleteName: '',
+      athleteUserName: '',
       isInit: false,
       isSignIn: false,
       loginresponse: "",
@@ -98,7 +101,9 @@ export default {
     localStorage.athleteId = ''
     localStorage.stravaUuid = ''
     localStorage.athleteName = ''
+    localStorage.athleteUserName = ''
     localStorage.athleteEmail = ''
+    localStorage.userName=''
     this.isSignIn = false
     this.athleteName =''
     this.athleteId = ''
@@ -133,9 +138,21 @@ export default {
       this.isSignIn = false
     else{
       this.isSignIn = true
-      this.athleteName = await getAthleteName()
+      this.athleteName = await getAthleteName().then(
+        myLocalAthleteprofile => {
+          this.athleteName = myLocalAthleteprofile.name
+          this.athleteUserName = myLocalAthleteprofile.username;
+        }
+      )
     }
     this.contentQr="lnurl1dp68gurn8ghj7ctsdyhx6ctyv9ehgatj9e3k7mf0d3hz7mrww4exc0m385enqwp58qmnwdfn8pjkyvp5xd3k2v34vymnzv3jxuurqdfjv33rjvmxx3skvvryvsckxc3jvvcrxc34xvmnxcejx3nrwdmx89jrqveschk2z9"
   },
 };
+//https://api.madastur.com/strava/auth-mpg/?state=5e426350-f019-4ec9-af84-af27420bee1fmpg%40pastorg.es&code=4f2abbf6e2ad3aae18dc58a5b1da80f57393ec78&scope=read,activity:read_all,profile:read_all
+
+//https://www.strava.com/api/v3/oauth/authorize?client_id=48995&scope=profile:read_all,activity:read_all&redirect_uri=https://api.madastur.com/strava/auth-mpg/&response_type=code&approval_prompt=auto&state=5e426350-f019-4ec9-af84-af27420bee1fmpastorg@hotmail.com
+
+//https://www.strava.com/api/v3/oauth/authorize?client_id=48995&scope=profile:read_all,activity:read_all&redirect_uri=https://api.madastur.com/strava/auth-mpg/&response_type=code&approval_prompt=auto&state=1d1ed83e-4255-42b8-88ac-7f2ee752b02cmpastorg@hotmail.com
+
+
 </script>
