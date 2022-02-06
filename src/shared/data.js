@@ -13,6 +13,14 @@ const getActivityTypes = async function() {
     return response.data;
 }
 
+const getLnurl = async function(username) {
+    console.info('entering getLnurl:' + username)
+    const response = await axios
+        .get(url+'.well-known/lnurlp/'+username);
+    console.info(response.data)
+    return response.data;
+}
+
 const getDestEmails = async function() {
     console.info('entering getDestEmails:' + url)
     const response = await axios
@@ -113,6 +121,7 @@ const addHome = async function(strhome){
 
 }
 export const data ={
+    getLnurl,
     getActivityTypes,
     getDestEmails,
     getAthleteProfile,

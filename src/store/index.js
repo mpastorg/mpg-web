@@ -7,8 +7,13 @@ Vue.use(Vuex)
 const state = {
   activityTypes: [],
   destEmails: [],
+  lnurl: ''
 };
 const mutations = {
+  getLnurl(state,lnurl){
+    
+    state.lnurl = lnurl;
+  },
   getActivityTypes(state,activityTypes){
     
     state.activityTypes = activityTypes;
@@ -25,6 +30,10 @@ const mutations = {
 
 };
 const actions = {
+  async getLnurlAction({commit},username){
+    const lnurl = await data.getLnurl(username);
+    commit('getLnurl',lnurl);
+  },
   async getActivityTypesAction({commit}){
     const activityTypes = await data.getActivityTypes();
     commit('getActivityTypes',activityTypes);

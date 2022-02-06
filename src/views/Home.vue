@@ -26,8 +26,9 @@
       </div>
       <br/>
       <div>
-        <center>Send a few Satoshis to @mpastorg to test your wallet:<br/>
+        <center>Send a few Satoshis to {{athleteUserName}}@madastur.com to test your wallet:<br/>
           <vue-qr :text="contentQr" :callback="test" qid="testid"></vue-qr>
+          <lnurl/>
         </center>
       </div>
 	</div>
@@ -38,6 +39,7 @@ import { data } from '../shared';
 //import ActivityTypes from "@/components/activity-types"
 import addEmail from "@/components/add-email"
 import destEmails from "@/components/dest-emails"
+import lnurl from "@/components/lnurl"
 import VueQr from 'vue-qr'
 
 function getStravaUuid(){
@@ -64,14 +66,24 @@ async function getAthleteName(){
     myLocalAthleteprofile = await data.getAthleteProfile();
     localStorage.athleteName = myLocalAthleteprofile.name;
     localStorage.athleteEmail = myLocalAthleteprofile.email;
-    localStorage.userName = myLocalAthleteprofile.username;
+    localStorage.athleteUserName = myLocalAthleteprofile.username;
+    console.log(myLocalAthleteprofile);
+  } else{
+
+    myLocalAthleteprofile ={
+      name : localStorage.athleteName,
+      email : localStorage.athleteEmail,
+      username : localStorage.athleteUserName
+    }
+    
   }
+
     console.info("getAthNamedespues"+localStorage.athleteName)
     return myLocalAthleteprofile;
 }
 export default {
   name: "Home",
-  components: {destEmails,addEmail,VueQr},
+  components: {destEmails,addEmail,VueQr, lnurl},
   props: {
     msg: String
   },
@@ -138,7 +150,7 @@ export default {
       this.isSignIn = false
     else{
       this.isSignIn = true
-      this.athleteName = await getAthleteName().then(
+      await getAthleteName().then(
         myLocalAthleteprofile => {
           this.athleteName = myLocalAthleteprofile.name
           this.athleteUserName = myLocalAthleteprofile.username;
