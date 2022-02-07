@@ -66,10 +66,13 @@ async function getAthleteName(){
     myLocalAthleteprofile = await data.getAthleteProfile();
     localStorage.athleteName = myLocalAthleteprofile.name;
     localStorage.athleteEmail = myLocalAthleteprofile.email;
+    if (myLocalAthleteprofile.username.substr(0,1)=='"')
+      myLocalAthleteprofile.username = myLocalAthleteprofile.username.substring(1,myLocalAthleteprofile.username.length -1);
     localStorage.athleteUserName = myLocalAthleteprofile.username;
     console.log(myLocalAthleteprofile);
   } else{
-
+    if (localStorage.athleteUserName.substr(0,1)=='"')
+      localStorage.athleteUserName = localStorage.athleteUserName.substring(1,localStorage.athleteUserName.length -1);
     myLocalAthleteprofile ={
       name : localStorage.athleteName,
       email : localStorage.athleteEmail,
