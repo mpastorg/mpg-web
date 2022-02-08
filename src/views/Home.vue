@@ -25,12 +25,7 @@
         <addEmail/>
       </div>
       <br/>
-      <div>
-        <center>Send a few Satoshis to {{athleteUserName}}@madastur.com to test your wallet:<br/>
-          <vue-qr :text="contentQr" :callback="test" qid="testid"></vue-qr>
-          <lnurl/>
-        </center>
-      </div>
+      <lnurl/>
 	</div>
 </template>
 <script>
@@ -40,7 +35,6 @@ import { data } from '../shared';
 import addEmail from "@/components/add-email"
 import destEmails from "@/components/dest-emails"
 import lnurl from "@/components/lnurl"
-import VueQr from 'vue-qr'
 
 function getStravaUuid(){
   if (!localStorage.stravaUuid){
@@ -86,7 +80,7 @@ async function getAthleteName(){
 }
 export default {
   name: "Home",
-  components: {destEmails,addEmail,VueQr, lnurl},
+  components: {destEmails,addEmail, lnurl},
   props: {
     msg: String
   },
@@ -160,7 +154,6 @@ export default {
         }
       )
     }
-    this.contentQr="lnurl1dp68gurn8ghj7ctsdyhx6ctyv9ehgatj9e3k7mf0d3hz7mrww4exc0m385enqwp58qmnwdfn8pjkyvp5xd3k2v34vymnzv3jxuurqdfjv33rjvmxx3skvvryvsckxc3jvvcrxc34xvmnxcejx3nrwdmx89jrqveschk2z9"
   },
 };
 //https://api.madastur.com/strava/auth-mpg/?state=5e426350-f019-4ec9-af84-af27420bee1fmpg%40pastorg.es&code=4f2abbf6e2ad3aae18dc58a5b1da80f57393ec78&scope=read,activity:read_all,profile:read_all

@@ -1,11 +1,10 @@
 <template>
-  <div><center>
-      lnurl:
-      <br/>
-      {{lnurl}}
-      <br/>
-      <vue-qr :text=lnurl.callback :callback="test" qid="testid"></vue-qr>
-  </center></div>
+    <div>
+      <center>Send a few Satoshis to {{athleteUserName}}@madastur.com to test your wallet:
+       <br/>
+      <vue-qr :text='lnurl.encoded' :callback="test" qid="testid"></vue-qr>
+    </center>
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -20,7 +19,7 @@
         components: {VueQr},
         data() {
 			return {
-                strLnurl:"",
+                athleteUserName:localStorage.athleteUserName,
 			};
 			
 		},

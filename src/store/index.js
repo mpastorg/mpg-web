@@ -32,6 +32,7 @@ const mutations = {
 const actions = {
   async getLnurlAction({commit},username){
     const lnurl = await data.getLnurl(username);
+    lnurl.encoded = 'lightning:'+lnurl.encoded;
     commit('getLnurl',lnurl);
   },
   async getActivityTypesAction({commit}){
