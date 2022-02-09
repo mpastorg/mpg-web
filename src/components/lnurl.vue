@@ -33,6 +33,7 @@
 			...mapState(['lnurl'] )
 		}, 
         async mounted(){
+			this.athleteUserName=localStorage.athleteUserName;
              await this.$store.dispatch('getLnurlAction', localStorage.athleteUserName)
         }
 	}
