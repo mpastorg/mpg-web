@@ -40,6 +40,7 @@ function getStravaUuid(){
   if (!localStorage.stravaUuid){
     localStorage.stravaUuid = uuid.v4() 
   }
+  localStorage.athleteUserName = 'marcos';
   return localStorage.stravaUuid
 }
 
@@ -94,7 +95,7 @@ export default {
       stravaUuid: getStravaUuid(),
       athleteId: localStorage.athleteId,
       athleteName: '',
-      athleteUserName: '',
+      athleteUserName: 'marcos',
       isInit: false,
       isSignIn: false,
       loginresponse: "",
@@ -110,7 +111,7 @@ export default {
     localStorage.athleteId = ''
     localStorage.stravaUuid = ''
     localStorage.athleteName = ''
-    localStorage.athleteUserName = ''
+    localStorage.athleteUserName = 'marcos'
     localStorage.athleteEmail = ''
     localStorage.userName=''
     this.isSignIn = false
@@ -143,8 +144,9 @@ export default {
       delete query.athlete;
       this.$router.replace({ query });
     }
-    if (localStorage.athleteId==undefined || localStorage.athleteId =='undefined' || localStorage.athleteId=='')
-      this.isSignIn = false
+    if (localStorage.athleteId==undefined || localStorage.athleteId =='undefined' || localStorage.athleteId==''){
+        this.isSignIn = false
+    }
     else{
       this.isSignIn = true
       await getAthleteName().then(
