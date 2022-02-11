@@ -2,7 +2,7 @@
     <div>
       <center>Send a few Satoshis to {{athleteUserName}}@madastur.com to test your wallet:
        <br/>
-      <vue-qr :text='lnurl.encoded' qid="testid"></vue-qr>
+      <vue-qr :text='qrText' qid="testid"></vue-qr>
     </center>
     </div>
 </template>
@@ -20,6 +20,7 @@
         data() {
 			return {
                 athleteUserName:localStorage.athleteUserName,
+				qrText:'',
 			};
 			
 		},
@@ -33,8 +34,10 @@
 			...mapState(['lnurl'] )
 		}, 
         async mounted(){
+			console.info('Entering getLnurl mounted')
 			this.athleteUserName=localStorage.athleteUserName;
-             await this.$store.dispatch('getLnurlAction', localStorage.athleteUserName)
+            await this.$store.dispatch('getLnurlAction', localStorage.athleteUserName);
+			this.qrText =  this.lnurl.encoded;
         }
 	}
 

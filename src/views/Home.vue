@@ -39,8 +39,8 @@ import lnurl from "@/components/lnurl"
 function getStravaUuid(){
   if (!localStorage.stravaUuid){
     localStorage.stravaUuid = uuid.v4() 
+    localStorage.athleteUserName = 'marcos';
   }
-  localStorage.athleteUserName = 'marcos';
   return localStorage.stravaUuid
 }
 
@@ -64,7 +64,7 @@ async function getAthleteName(){
     if (myLocalAthleteprofile.username.substr(0,1)=='"')
       myLocalAthleteprofile.username = myLocalAthleteprofile.username.substring(1,myLocalAthleteprofile.username.length -1);
     localStorage.athleteUserName = myLocalAthleteprofile.username;
-    console.log(myLocalAthleteprofile);
+  
   } else{
     if (localStorage.athleteUserName.substr(0,1)=='"')
       localStorage.athleteUserName = localStorage.athleteUserName.substring(1,localStorage.athleteUserName.length -1);
@@ -76,7 +76,8 @@ async function getAthleteName(){
     
   }
 
-    console.info("getAthNamedespues"+localStorage.athleteName)
+    console.info("getAthNamedespues"+localStorage.athleteUserName)
+    console.log(myLocalAthleteprofile);
     return myLocalAthleteprofile;
 }
 export default {
