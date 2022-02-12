@@ -1,6 +1,6 @@
 <template>
     <div>
-      <center>Send a few Satoshis to {{athleteUserName}}@madastur.com to test your wallet:
+      <center>Envía unos pocos Satoshis a {{athleteUserName}}@madastur.com si te gustó lo que viste:
        <br/>
       <vue-qr :text='qrText' qid="testid"></vue-qr>
     </center>
