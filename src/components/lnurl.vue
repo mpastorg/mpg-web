@@ -1,7 +1,6 @@
 <template>
     <div>
-      <center>Envía unos pocos Satoshis a {{athleteUserName}}@madastur.com si te gustó lo que viste:
-       <br/>
+      <center>
       <vue-qr :text='qrText' qid="testid"></vue-qr>
     </center>
     </div>

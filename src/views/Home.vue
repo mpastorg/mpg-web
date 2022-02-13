@@ -7,44 +7,37 @@
     <h3>¿Qué vas a encontrar aquí?</h3>
 
     Una web con pruebas sobre las tecnologías que voy estudiando.
-    <ul>
-      <li>
-    Microservicios, kubernetes, events driven design
-      </li>
-      <li>
-    VueJS, React, Javascript
-      </li>
-      <li>
-    Machine Learning
-      </li><li>
+    <center><table>
+      <tr><td>- </td><td>
+    Microservicios, Kubernetes, Kafka
+      </td></tr>
+      <tr><td>- </td><td>
+    VueJS, React, Javascript, Java, SpringBoot 
+      </td></tr>
+      <tr><td>- </td><td>
+    Machine Learning, Python, TensorFlow
+      </td></tr><tr><td>- </td><td>
     Cryptocurrencies, Lightning Network
-      </li>
-    </ul>
+      </td></tr>
+    </table></center>
+      Envía unos pocos Satoshis a {{athleteUserName}}@madastur.com si te gusta lo que ves:
+       <br/>
       <lnurl/>
-
    <h3>¿Quien soy?</h3>
-      Asturiano de nacimiento.
+      Asturiano de nacimiento. Madrileño a los dos años. MadAstur ya de por vida. 
     <br/>
     
-      Madrileño de por vida. 
+      Y para colmo, ahora vivo en Chicago desde el 2020, y antes en Birminghan, Alabama desde 2013.
     <br/>
     
-      Y para colmo ahora vivo en Chicago, USA. 
-    <br/>
-    
-    <h3>¿Como contactar conmigo?</h3>
-
-
-    
-    https://www.linkedin.com/in/mpastorg/
+    <a href="https://www.linkedin.com/in/mpastorg/">https://www.linkedin.com/in/mpastorg/</a>
 
 <br/>    
-    https://twitter.com/mpastorg
+    <a href="https://twitter.com/mpastorg">https://twitter.com/mpastorg</a>
 
-    <h3>Donde está el código de mis pruebas?</h3>
+    <h3>¿Donde está el código de mis pruebas?</h3>
     
-    https://github.com/mpastorg/ casi todos los repos son privados, tengo que pasar un tiempo revisando la seguridad y lo que está harcoded antes
-    de que pueda abirlos publicamente. 
+    <a href="https://github.com/mpastorg/">https://github.com/mpastorg/</a> De momento, casi todos los repos son privados, tengo que pasar un tiempo revisando la seguridad y lo que está harcoded antes de que pueda abrirlos publicamente. 
     <br/>
     </div>
 </div>
@@ -163,7 +156,7 @@ export default {
 };
 </script>
 <style lang="css" scoped>
-ul {
+td {
     text-align: left;
 }
 </style>
