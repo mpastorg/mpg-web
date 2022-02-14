@@ -12,7 +12,7 @@
     Microservicios, Kubernetes, Kafka
       </td></tr>
       <tr><td>- </td><td>
-    VueJS, React, Javascript, Java, SpringBoot 
+    VueJS, <a href="https://github.com/mpastorg/react-activity">React</a>, Javascript, Java, SpringBoot 
       </td></tr>
       <tr><td>- </td><td>
     Machine Learning, Python, TensorFlow

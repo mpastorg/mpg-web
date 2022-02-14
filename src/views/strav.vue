@@ -24,6 +24,7 @@
         <addEmail/>
       </div>
       <br/>
+       Envía unos pocos Satoshis a {{athleteUserName}}@madastur.com si te gusta lo que ves:
       <lnurl/>
 	</div>
 </template>
