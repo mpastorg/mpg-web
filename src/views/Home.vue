@@ -6,7 +6,7 @@
     <div>
     <h3>¿Qué vas a encontrar aquí?</h3>
 
-    Una web con pruebas sobre las tecnologías que voy estudiando.
+    Una web con pruebas de concepto sobre las tecnologías que voy estudiando.
     <center><table>
       <tr><td>- </td><td>
     Microservicios, Kubernetes, Kafka
@@ -20,9 +20,35 @@
     Cryptocurrencies, Lightning Network
       </td></tr>
     </table></center>
-      Envía unos pocos Satoshis a {{athleteUserName}}@madastur.com si te gusta lo que ves:
-       <br/>
+       <h3>Mis pruebas de concepto.</h3>
+    <center>
+      <table border="0">
+            <tr><td>- </td><td>
+    Envio de Bitcoins y Satoshis.
+          Envía Satoshis a {{athleteUserName}}@madastur.com usando Lightning Network:
+       </td></tr>
+      <tr><td colspan="2">
       <lnurl/>
+      </td></tr>
+      </table>
+    </center>
+    <center>
+      <table border="0">
+      <tr><td>- </td><td>
+    <router-link to="/strav">Strava</router-link>
+    Comparte tus actividades de Strava por email con alguien que no sea de Strava. 
+      </td></tr>
+      <tr><td>- </td><td>
+    <router-link to="/Idealista">Idealista.</router-link> 
+    Predicción de precios de casas en Madrid.  
+      </td></tr>
+    <tr><td>- </td><td>
+    Mis repos: <a href="https://github.com/mpastorg/">https://github.com/mpastorg/</a> . Mayoritariamente privados hasta que revise la seguridad y pueda abrirlos publicamente.
+      </td></tr>
+    </table></center>
+    </div>
+    <div>
+
    <h3>¿Quien soy?</h3>
       Asturiano de nacimiento. Madrileño a los dos años. MadAstur ya de por vida. 
     <br/>
@@ -35,11 +61,7 @@
 <br/>    
     <a href="https://twitter.com/mpastorg">https://twitter.com/mpastorg</a>
 
-    <h3>¿Donde está el código de mis pruebas?</h3>
-    
-    <a href="https://github.com/mpastorg/">https://github.com/mpastorg/</a> De momento, casi todos los repos son privados, tengo que pasar un tiempo revisando la seguridad y lo que está harcoded antes de que pueda abrirlos publicamente. 
-    <br/>
-    </div>
+ </div>
 </div>
 </template>
 <script>

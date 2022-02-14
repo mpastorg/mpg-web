@@ -3,7 +3,7 @@
     <div id="nav">
       | <router-link to="/">Home</router-link> |
       <router-link to="/strav">Strava</router-link> |
-      <router-link to="/Idealista">Machine Learning</router-link> |
+      <router-link to="/Idealista">Idealista</router-link> |
       <router-link to="/about">Sugerencias</router-link> |
       <router-link to="/Doc">Doc</router-link> | 
     </div>
