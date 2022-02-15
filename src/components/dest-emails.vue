@@ -1,39 +1,33 @@
 <template>    
     <div>
         <center>
-        <div>
-		<table>
-            <tbody>
+            <h3>
+                 Historia de tus actividades
+            </h3>
+            <p> Cada vez que hagas una nueva actividad, la añadimos <a :href="'https://react.madastur.com/strava/activities/'+tempId">aquí</a> para que puedas consutarlas.
+                <br/> <br/>
+                <b>Aviso importante: No están protegidas y cualquiera puede verlas.</b>
+            </p>
+            <h3>Emails que reciben tus actividades
+            </h3>
+            <table align="center">
                 <tr>
-                    <td>
-                        Emails que reciben tus actividades:
-                    </td>
-                    <td>
-                        <button @click="getAthleteEmails()">Listar</button>
-                    </td>
+                    <td>Tipo Actividad</td>
+                    <td>Email</td>
+                    <td>Nombre</td>
+                    <td>Confirmación</td>
+                    <td>Borrar</td>
                 </tr>
-                <tr>
-                    <td>
-                        <a :href="'https://react.madastur.com/strava/activities/'+tempId"> Go to list of Activities</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-        </center>
-		<div>
-			<br/>
-			<table align="center">
 				<tr v-for="email in destEmails" :key="email.rowtableid">
 					<td>{{email.activitytype}}</td>
 					<td>{{ email.destemail}}</td>
 					<td>{{email.destname}}</td>
 					<td>{{email.approved}}</td>
 					<td><button @click="deleteEmail(email.rowtableid)">Delete email</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button v-if="email.approved === false"  @click="reSendEmail(email.rowtableid)">Re-Send email</button></td>
+                    <button v-if="email.approved === false"  @click="reSendEmail(email.rowtableid)">Re-Send email</button></td>
 				</tr>	
 			</table>
-		</div>  
+        </center>
     </div>
 </template>
 
@@ -71,7 +65,8 @@ export default {
         }
     },
     async created () {
-        console.info('Entering created dest-emails')
+        console.info('Entering created dest-emails');
+        await this.getAthleteEmails();
     },
     computed: {
         ...mapState(['destEmails'] )

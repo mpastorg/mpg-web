@@ -24,8 +24,6 @@
       
 		</div>
       <br/>
-      <br/>
-      <br/>
       
       <div v-if="isSignIn">
         <destEmails/>

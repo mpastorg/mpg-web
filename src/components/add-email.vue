@@ -1,6 +1,6 @@
 <template>
     <div align="center">
-		<h2>Add email to athlete</h2>
+		<h3>Añadir email que recibe actividades </h3>
 		<table align="center">
 			<tr hidden='true'>
 				<td>Athlete ID: </td><td><span id="athleteid">{{myDestEmail.athleteid}}</span></td>		
