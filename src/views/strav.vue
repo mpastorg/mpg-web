@@ -1,18 +1,27 @@
 <template>
 	<div class="strava">
-    <div>
-      Hola {{athleteName}} - {{athleteUserName}}
-    </div>
-    <button v-if="isSignIn" @click="cleanstravalogin"> Log out</button>
-		<div v-else>
-      <p> Tu email: 
+    <div v-if="isSignIn">
+        Hola {{athleteName}} - {{athleteUserName}}
+    <button @click="cleanstravalogin"> Desconectar</button>
+		</div>
+    <div v-else>
+      <h3>
+        ¿Quieres compartir tus actividades de Strava con gente que no está en Strava? ¿O enviarte a ti mismo todas las actividades
+        para tenerlas guardadas? 
+        <br/>
+      </h3>
+      <p> Esta es tu aplicación, añade tu email: 
         <input type="text" id="athleteEmail" v-model="athleteEmail"/>
+      <br/>
+      <br/>
+      Y aprueba en Strava el compartir tus actividades con esta aplicación. 
+      <br/>
+      <br/>
+      
+      <button @click="gostrava">Ir a strava</button>
+      <br/>
       </p>
-      <h1>
-        Ir a Strava.com para aprobar esta app.
-      </h1>
-      <button @click="gostrava">Go strava</button>
-
+      
 		</div>
       <br/>
       <br/>
@@ -23,9 +32,7 @@
         <br/>
         <addEmail/>
       </div>
-      <br/>
-       Envía unos pocos Satoshis a {{athleteUserName}}@madastur.com si te gusta lo que ves:
-      <lnurl/>
+
 	</div>
 </template>
 <script>
@@ -34,7 +41,7 @@ import { data } from '../shared';
 //import ActivityTypes from "@/components/activity-types"
 import addEmail from "@/components/add-email"
 import destEmails from "@/components/dest-emails"
-import lnurl from "@/components/lnurl"
+
 
 function getStravaUuid(){
   if (!localStorage.stravaUuid){
@@ -73,7 +80,7 @@ async function getAthleteName(){
 }
 export default {
   name: "Home",
-  components: {destEmails,addEmail, lnurl},
+  components: {destEmails,addEmail},
   props: {
     msg: String
   },

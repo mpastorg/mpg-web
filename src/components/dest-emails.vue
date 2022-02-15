@@ -6,8 +6,13 @@
             <tbody>
                 <tr>
                     <td>
-                        <button @click="getAthleteEmails()">Get Athlete emails</button>
+                        Emails que reciben tus actividades:
                     </td>
+                    <td>
+                        <button @click="getAthleteEmails()">Listar</button>
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <a :href="'https://react.madastur.com/strava/activities/'+tempId"> Go to list of Activities</a>
                     </td>
