@@ -10,21 +10,19 @@
             </p>
             <h3>Emails que reciben tus actividades
             </h3>
-            <table align="center">
+            <table align="center" style="text-align: center">
                 <tr>
-                    <td>Tipo Actividad</td>
+                    <td>Tipo</td>
                     <td>Email</td>
-                    <td>Nombre</td>
-                    <td>Confirmación</td>
-                    <td>Borrar</td>
+                    <!--td>Nombre</td-->
+                    <td>Borrar / Re-enviar</td>
                 </tr>
 				<tr v-for="email in destEmails" :key="email.rowtableid">
 					<td>{{email.activitytype}}</td>
 					<td>{{ email.destemail}}</td>
-					<td>{{email.destname}}</td>
-					<td>{{email.approved}}</td>
-					<td><button @click="deleteEmail(email.rowtableid)">Delete email</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button v-if="email.approved === false"  @click="reSendEmail(email.rowtableid)">Re-Send email</button></td>
+					<!--td>{{email.destname}}</td-->
+					<td><center><button @click="deleteEmail(email.rowtableid)">Borrar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button v-if="email.approved === false"  @click="reSendEmail(email.rowtableid)">Re-enviar email</button></center></td>
 				</tr>	
 			</table>
         </center>
@@ -74,3 +72,8 @@ export default {
 
 }
 </script>
+<style lang="css" scoped>
+td {
+    text-align: center;
+}
+</style>
