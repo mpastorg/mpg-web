@@ -1,21 +1,21 @@
 <template>
     <div align="center">
-		<h3>Añadir email que recibe actividades </h3>
+		<h3>Añadir email para recibir actividades </h3>
 		<table align="center">
 			<tr hidden='true'>
 				<td>Athlete ID: </td><td><span id="athleteid">{{myDestEmail.athleteid}}</span></td>		
 			</tr>
-			<tr>
+			<tr hidden='true'>
 				<td>Athlete Name: </td><td><span id="athleteName">{{localAthleteName}}</span></td>		
 			</tr>
 			<tr>
-				<td>Dest email: </td><td><input type="text" id="destemail" v-model="myDestEmail.destemail"/></td>		
+				<td>Email destinatario: </td><td><input type="text" id="destemail" v-model="myDestEmail.destemail"/></td>		
 			</tr>
 			<tr>
-				<td>Dest name: </td><td><input type="text" id="destname" v-model="myDestEmail.destname"/></td>		
+				<td>Apodo (opcional): </td><td><input type="text" id="destname" v-model="myDestEmail.destname"/></td>		
 			</tr>
 			<tr>
-				<td>Activity:</td>
+				<td>Tipo de Actividad (all por defecto):</td>
 				<td>
 					<select v-model="myDestEmail.activitytype">
 						<option v-for="item in activityTypes" :key="item.rowtableid">

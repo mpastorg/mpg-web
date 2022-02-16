@@ -19,7 +19,8 @@
                 </tr>
 				<tr v-for="email in destEmails" :key="email.rowtableid">
 					<td>{{email.activitytype}}</td>
-					<td>{{ email.destemail}}</td>
+					<td v-if="email.approved === true"> {{ email.destemail}}</td>
+					<td v-else style="color:red"> {{ email.destemail}}</td>
 					<!--td>{{email.destname}}</td-->
 					<td><center><button @click="deleteEmail(email.rowtableid)">Borrar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button v-if="email.approved === false"  @click="reSendEmail(email.rowtableid)">Re-enviar email</button></center></td>
