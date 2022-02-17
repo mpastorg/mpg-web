@@ -17,6 +17,11 @@
 				</tr>
 				<br/><tr><td align="center"><input type="button" @click="sendForm()" value="Enviar"/></td></tr>
 			</table>
+			<p>
+				Código fuente servidor <a href="https://github.com/mpastorg/strava-client-comments">aquí</a>
+				<br/><br/>
+				*** Nada que aprender, es lo que yo hice para volver a programar algo después de muchos años
+			</p>
 		</center>
 	</div>	
 </template>
