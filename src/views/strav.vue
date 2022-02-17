@@ -1,8 +1,11 @@
 <template>
 	<div class="strava">
     <div v-if="isSignIn">
-        Hola {{athleteName}} - {{athleteUserName}}
-    <button @click="cleanstravalogin"> Desconectar</button>
+        Hola <b>{{athleteName}}</b>.
+        <br/> 
+        Tu usuario de Strava es {{athleteUserName}}. 
+        <br/><br/>
+        Pulsa en <button @click="cleanstravalogin"> desconectar</button> para dejar de ver tu información en este navegador. 
 		</div>
     <div v-else>
       <h3>

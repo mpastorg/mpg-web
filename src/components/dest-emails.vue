@@ -6,22 +6,21 @@
             </h3>
             <p> Cada vez que hagas una nueva actividad, la añadimos <a :href="'https://react.madastur.com/strava/activities/'+tempId">aquí</a> para que puedas consutarlas.
                 <br/> <br/>
-                <b>Aviso importante: No están protegidas y cualquiera puede verlas.</b>
+                <b><span style="color: red">Aviso importante: No están protegidas y cualquiera puede verlas.</span></b>
             </p>
+            <!-- TODO: borrado lógico de todas las actividades --> 
             <h3>Emails que reciben tus actividades
             </h3>
             <table align="center" style="text-align: center">
                 <tr>
                     <td>Tipo</td>
                     <td>Email</td>
-                    <!--td>Nombre</td-->
                     <td>Borrar / Re-enviar</td>
                 </tr>
 				<tr v-for="email in destEmails" :key="email.rowtableid">
 					<td>{{email.activitytype}}</td>
 					<td v-if="email.approved === true"> {{ email.destemail}}</td>
 					<td v-else style="color:red"> {{ email.destemail}}</td>
-					<!--td>{{email.destname}}</td-->
 					<td><center><button @click="deleteEmail(email.rowtableid)">Borrar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button v-if="email.approved === false"  @click="reSendEmail(email.rowtableid)">Re-enviar email</button></center></td>
 				</tr>	

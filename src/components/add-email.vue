@@ -25,7 +25,7 @@
 				</td>
 			</tr>
 		</table>
-		<center><button @click="submitEmail()">Submit new email</button></center>
+		<center><button @click="submitEmail()">Añadir email</button></center>
 	</div>
 </template>
 <script>

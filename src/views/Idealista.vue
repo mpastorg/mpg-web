@@ -93,8 +93,6 @@ export default {
 				const localhomevalue = await data.addHome(strhome);
 				console.info(localhomevalue["results"])
 				this.homevalue=Math.exp(localhomevalue["results"][0]).toFixed(0) + " EUR";
-				this.clientComments.clientcomment = strhome
-				await data.addComments(this.clientComments);
 			}
 		},
 

@@ -3,14 +3,19 @@
 		<center>
 			<table>
 				<tr>
-					<td>Tu email pare responderte:</td>
-					<td><input type="text" id="clientemail" size="33" maxlength="50" v-model="clientComments.clientemail"/></td>
+					<td>Tu email para responderte:</td>
 				</tr>
 				<tr>
+					<td><input type="text" id="clientemail" size="33" maxlength="50" v-model="clientComments.clientemail"/></td>
+				</tr>
+				<br/>
+				<tr>
 					<td>Tus comentarios o sugerencias:</td>
+				</tr>
+				<tr>
 					<td><textarea id="comments" rows="5" cols="33" maxlength="1000" v-model="clientComments.clientcomment"/></td>
 				</tr>
-				<tr><td colspan="2" align="center"><input type="button" @click="sendForm()" value="Enviar"/></td></tr>
+				<br/><tr><td align="center"><input type="button" @click="sendForm()" value="Enviar"/></td></tr>
 			</table>
 		</center>
 	</div>	
