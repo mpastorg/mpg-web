@@ -33,6 +33,10 @@
         <br/>
         <addEmail/>
       </div>
+  <div>
+    <br/>
+  *** Si quieres que borre tus datos, envía un email a <a href="mailto:admin@madastur.com">admin@madastur.com</a> ***
+  </div>
 
 	</div>
 </template>

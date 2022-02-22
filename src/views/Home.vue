@@ -6,7 +6,7 @@
     <div>
     <h3>¿Qué vas a encontrar aquí?</h3>
 
-    Una web con pruebas de concepto sobre las tecnologías que voy estudiando.
+    Una web con pruebas de concepto usando las tecnologías que voy estudiando.
     <center><table>
       <tr><td>- </td><td>
     Microservicios, Kubernetes, <a href="https://hub.docker.com/u/mpastorg">Docker</a>, Kafka
@@ -17,14 +17,14 @@
       <tr><td>- </td><td>
     Machine Learning, Python, TensorFlow
       </td></tr><tr><td>- </td><td>
-    Cryptocurrencies, Lightning Network
+    Crypto, Bitcoin, Ethereum, Lightning Network
       </td></tr>
     </table></center>
        <h3>Mis pruebas de concepto.</h3>
     <center>
       <table border="0">
             <tr><td>- </td><td>
-    Envio de Bitcoins y Satoshis.
+          <b style="color:blue">Pagos basados en Bitcoin.</b>
           Envía Satoshis a {{athleteUserName}}@madastur.com usando Lightning Network:
        </td></tr>
       <tr><td colspan="2">
@@ -35,25 +35,25 @@
     <center>
       <table border="0">
       <tr><td>- </td><td>
-    <router-link to="/strav">Strava</router-link>
-    Comparte tus actividades de Strava por email con alguien que no sea de Strava. 
+      <router-link to="/strav">Strava.</router-link>
+      Comparte tus actividades de Strava por email <b style="color:blue">con alguien que no sea de Strava</b>. 
       </td></tr>
       <tr><td>- </td><td>
     <router-link to="/Idealista">Idealista.</router-link> 
-    Predicción de precios de casas en Madrid.  
+    <b style="color:blue"> Predicción (regulera)</b> de precios de casas en zona sur-oeste de Madrid.  
       </td></tr>
     <tr><td>- </td><td>
-    Mis repos: <a href="https://github.com/mpastorg/">https://github.com/mpastorg/</a> . Mayoritariamente privados hasta que revise la seguridad y pueda abrirlos publicamente.
+    Mis <a href="https://github.com/mpastorg/">repos</a> mayoritariamente privados hasta que revise la seguridad y pueda abrirlos.
       </td></tr>
     </table></center>
     </div>
     <div>
 
    <h3>¿Quien soy?</h3>
-      Asturiano de nacimiento. Madrileño a los dos años. MadAstur ya de por vida. 
+      Asturiano de nacimiento. Madrileño a los dos años. <b style="color:blue">MadAstur</b> ya de por vida. 
     <br/>
     
-      Y para colmo, ahora vivo en Chicago desde el 2020, y antes en Birminghan, Alabama desde 2013.
+      ¿Y donde estoy? Ahora vivo en <b style="color:blue">Chicago</b> desde el 2020, y antes en <b style="color:blue">Birminghan</b>, Alabama desde 2013.
     <br/>
     
     <a href="https://www.linkedin.com/in/mpastorg/">https://www.linkedin.com/in/mpastorg/</a>
