@@ -9,19 +9,18 @@
 		</div>
     <div v-else>
       <h3>
-        ¿Quieres compartir tus actividades de Strava con gente que no está en Strava? ¿O enviarte a ti mismo todas las actividades
-        para tenerlas guardadas? 
+         {{$t('strav-006')}} {{$t('strav-007')}}
         <br/>
       </h3>
-      <p> Esta es tu aplicación, añade tu email: 
+      <p> {{$t('strav-008')}} 
         <input type="text" id="athleteEmail" v-model="athleteEmail"/>
       <br/>
       <br/>
-      Y aprueba en Strava el compartir tus actividades con esta aplicación. 
+      {{$t('strav-009')}}
       <br/>
       <br/>
       
-      <button @click="gostrava">Ir a strava</button>
+      <button @click="gostrava">{{$t('strav-010')}}</button>
       <br/>
       </p>
       
@@ -35,7 +34,7 @@
       </div>
   <div>
     <br/>
-  *** Si quieres que borre tus datos, envía un email a <a href="mailto:admin@madastur.com">admin@madastur.com</a> ***
+  {{$t('strav-011')}} <a href="mailto:admin@madastur.com">admin@madastur.com</a> ***
   </div>
 
 	</div>
@@ -48,11 +47,12 @@
 		,"strav-003":"Pulsa en "
 		,"strav-004":"desconectar"
 		,"strav-005":"para dejar de ver tu información en este navegador."
-		,"strav-006":""
-		,"strav-007":""
-		,"strav-008":""
-		,"strav-009":""
-		,"strav-010":""
+		,"strav-006":"¿Quieres compartir tus actividades de Strava con gente que no está en Strava? "
+		,"strav-007":"¿O enviarte a ti mismo todas las actividades para tenerlas guardadas? "
+		,"strav-008":"Esta es tu aplicación, añade tu email: "
+		,"strav-009":"Y aprueba en Strava el compartir tus actividades con esta aplicación. "
+		,"strav-010":"Ir a Strava"
+    ,"strav-011":"*** Si quieres que borre tus datos, envía un email a "
   },
   "en":{
 		"strav-001":"Hello "
@@ -60,11 +60,12 @@
 		,"strav-003":"Click "
 		,"strav-004":"forget"
 		,"strav-005":" to not see your information in this browser anymore."
-		,"strav-006":""
-		,"strav-007":""
-		,"strav-008":""
-		,"strav-009":""
-		,"strav-010":""
+		,"strav-006":"Share your Strava activities with people that don't have a Strava account. "
+		,"strav-007":"You may send the activities to your email and keep them forever. "
+		,"strav-008":"Start here adding your email "
+		,"strav-009":"And authorize sharing your info in Strava with this app. "
+		,"strav-010":"Go to Strava"
+    ,"strav-011":"*** To delete your information from this app, send an email to "
   }
 }
 </i18n>
