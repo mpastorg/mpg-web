@@ -1,6 +1,6 @@
 <template>
     <div align="center">
-		<h3>Añadir email para recibir actividades </h3>
+		<h3>{{$t('add-001')}} </h3>
 		<table align="center">
 			<tr hidden='true'>
 				<td>Athlete ID: </td><td><span id="athleteid">{{myDestEmail.athleteid}}</span></td>		
@@ -9,13 +9,13 @@
 				<td>Athlete Name: </td><td><span id="athleteName">{{localAthleteName}}</span></td>		
 			</tr>
 			<tr>
-				<td>Email destinatario: </td><td><input type="text" id="destemail" v-model="myDestEmail.destemail"/></td>		
+				<td>{{$t('add-002')}} </td><td><input type="text" id="destemail" v-model="myDestEmail.destemail"/></td>		
 			</tr>
 			<tr>
-				<td>Apodo (opcional): </td><td><input type="text" id="destname" v-model="myDestEmail.destname"/></td>		
+				<td>{{$t('add-003')}}</td><td><input type="text" id="destname" v-model="myDestEmail.destname"/></td>		
 			</tr>
 			<tr>
-				<td>Tipo de Actividad (all por defecto):</td>
+				<td>{{$t('add-004')}}</td>
 				<td>
 					<select v-model="myDestEmail.activitytype">
 						<option v-for="item in activityTypes" :key="item.rowtableid">
@@ -25,9 +25,31 @@
 				</td>
 			</tr>
 		</table>
-		<center><button @click="submitEmail()">Añadir email</button></center>
+		<center><button @click="submitEmail()">{{$t('add-005')}}</button></center>
 	</div>
 </template>
+<i18n>
+{
+	"es":{
+		"add-001":"Añadir un email para recibir información sobre actividades en tiempo real"
+		,"add-002":"Email destinatario:"
+		,"add-003":"Apodo (opcional): "
+		,"add-004":"Tipo de Actividad (all por defecto):"
+		,"add-005":"Añadir email"
+        
+  },
+  "en":{
+		"add-001":"Add email to get real time info about your activities"
+		,"add-002":"Destination email:"
+		,"add-003":"Nickname (optional):"
+		,"add-004":"Activity type (optional):"
+		,"add-005":"Add the email"
+        
+        
+  }
+}
+</i18n>
+
 <script>
 	import { mapState, mapActions } from 'vuex';
 	export default {

@@ -1,11 +1,11 @@
 <template>
 	<div class="strava">
     <div v-if="isSignIn">
-        Hola <b>{{athleteName}}</b>.
+        {{$t('strav-001')}} <b>{{athleteName}}</b>.
         <br/> 
-        Tu usuario de Strava es {{athleteUserName}}. 
+        {{$t('strav-002')}} {{athleteUserName}}. 
         <br/><br/>
-        Pulsa en <button @click="cleanstravalogin"> desconectar</button> para dejar de ver tu información en este navegador. 
+        {{$t('strav-003')}} <button @click="cleanstravalogin"> {{$t('strav-004')}}</button> {{$t('strav-005')}} 
 		</div>
     <div v-else>
       <h3>
@@ -40,6 +40,35 @@
 
 	</div>
 </template>
+<i18n>
+{
+	"es":{
+		"strav-001":"Hola "
+		,"strav-002":"Tu usuario de Strava es "
+		,"strav-003":"Pulsa en "
+		,"strav-004":"desconectar"
+		,"strav-005":"para dejar de ver tu información en este navegador."
+		,"strav-006":""
+		,"strav-007":""
+		,"strav-008":""
+		,"strav-009":""
+		,"strav-010":""
+  },
+  "en":{
+		"strav-001":"Hello "
+		,"strav-002":"Your Strava username is "
+		,"strav-003":"Click "
+		,"strav-004":"forget"
+		,"strav-005":" to not see your information in this browser anymore."
+		,"strav-006":""
+		,"strav-007":""
+		,"strav-008":""
+		,"strav-009":""
+		,"strav-010":""
+  }
+}
+</i18n>
+
 <script>
 import { uuid} from 'vue-uuid';
 import { data } from '../shared';
