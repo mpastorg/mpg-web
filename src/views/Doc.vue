@@ -20,6 +20,11 @@
 				<td class="tg-onff">Doc for micro-service Activity:</td>
 				<td class="tg-7h26"><a href="doc-activity/swagger-ui/">doc-activity/swagger-ui/</a></td>
 			</tr>
+			<tr>
+				<td class="tg-0lax">2022-04-02</td>
+				<td class="tg-onff">Doc for micro-service Comments:</td>
+				<td class="tg-7h26"><a href="doc-comments/swagger-ui/">doc-comments/swagger-ui/</a></td>
+			</tr>
 			</tbody>
 			</table>
 		</div>
