@@ -56,8 +56,10 @@
     
       {{ $t('home-014') }} <b style="color:blue">Chicago</b> 
       {{ $t('home-015') }} <b style="color:blue">Birmingham</b>, Alabama 
-      {{ $t('home-016') }}
-    <br/><br/>
+      {{ $t('home-016') }} <br/>
+      {{ $t('home-019') }} <b style="color:blue">London. </b> 
+      {{ $t('home-020') }}
+      <br/><br/>
     
     <a href="https://www.linkedin.com/in/mpastorg/">https://www.linkedin.com/in/mpastorg/</a>
 
@@ -83,11 +85,13 @@
     ,"home-011":"¿Quien soy?"
     ,"home-012":"Asturiano de nacimiento. Madrileño a los dos años."
     ,"home-013":" ya de por vida."
-    ,"home-014":"¿Y donde estoy? Ahora vivo en"
+    ,"home-014":"¿Donde estoy? Ahora vivo en"
     ,"home-015":"desde el 2020, y antes en"
     ,"home-016":"desde 2013."
     ,"home-017":"Estos son mis"
     ,"home-018":". Muchos privados hasta que actualice la seguridad."
+    ,"home-019":"¿Próxima parada?"
+    ,"home-020":" A finales de año me mudo allí."
 	}
   ,"en":{
 		"home-001":"What can you expect here?"
@@ -108,7 +112,8 @@
     ,"home-016":"since 2013."
     ,"home-017":"These are my "
     ,"home-018":". Many are still private while I review and fix security."
-  }
+    ,"home-019":"Next station?"
+    ,"home-020":" Relocating by the of the year."}
 
 }
 </i18n>
