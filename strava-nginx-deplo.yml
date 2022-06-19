@@ -24,6 +24,10 @@ spec:
           volumeMounts:
           - name: cm-app-nginx-vol
             mountPath: "/etc/nginx/conf.d/"
+          - name: cm-app-nginx-cert
+            mountPath: "/etc/nginx/"
+          - name: cm-app-nginx-key
+            mountPath: "/etc/nginx/"
           resources:
             limits:
               cpu: 500m
@@ -39,6 +43,18 @@ spec:
               items:
               - key: default.conf
                 path: default.conf              
+          - name: cm-app-nginx-cert
+            configMap:
+              name: cm-app-nginx-cert
+              items:
+              - key: api_madastur_com.crt
+                path: api_madastur_com.crt              
+          - name: cm-app-nginx-key
+            configMap:
+              name: cm-app-nginx-key
+              items:
+              - key: api_madastur_com.key
+                path: api_madastur_com.key              
 ---
 apiVersion: v1
 kind: Service
