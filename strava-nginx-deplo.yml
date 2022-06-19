@@ -24,9 +24,6 @@ spec:
           volumeMounts:
           - name: cm-app-nginx-vol
             mountPath: "/etc/nginx/conf.d/"
-          - name: cm-config-vue
-            mountPath: "/usr/share/nginx/html/config.js"
-            subPath: "config.js"
           resources:
             limits:
               cpu: 500m
@@ -41,11 +38,7 @@ spec:
               name: cm-app-nginx
               items:
               - key: default.conf
-                path: default.conf
-          - name: cm-config-vue
-            configMap:
-              name: cm-config-vuejs
-              
+                path: default.conf              
 ---
 apiVersion: v1
 kind: Service
