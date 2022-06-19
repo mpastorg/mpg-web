@@ -34,8 +34,10 @@
       </div>
   <div>
     <br/>
+  {{$t('strav-012')}} <a href="https://github.com/mpastorg/mpg-web"> mpg-web</a> ***
+  <br/> <br/>
   {{$t('strav-011')}} <a href="mailto:admin@madastur.com">admin@madastur.com</a> ***
-  </div>
+    </div>
 
 	</div>
 </template>
@@ -53,6 +55,7 @@
 		,"strav-009":"Y aprueba en Strava el compartir tus actividades con esta aplicación. "
 		,"strav-010":"Ir a Strava"
     ,"strav-011":"*** Si quieres que borre tus datos, envía un email a "
+    ,"strav-012":"*** Codigo fuente en GitHub: "
   },
   "en":{
 		"strav-001":"Hello "
@@ -66,6 +69,7 @@
 		,"strav-009":"And authorize sharing your info in Strava with this app. "
 		,"strav-010":"Go to Strava"
     ,"strav-011":"*** To delete your information from this app, send an email to "
+    ,"strav-012":"*** Source code in GitHub: "
   }
 }
 </i18n>
