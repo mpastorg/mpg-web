@@ -4,8 +4,8 @@ pipeline {
     ENV = 'pro'
     MPGHTTP_PORT = 32509
     MPGHTTPS_PORT = 32506
-    RELEASE = '0.4'
-    registry = "mpastorg/mpg-vuejs"
+    RELEASE = '0.5'
+    registry = "mpastorg/mpg-web"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
@@ -26,7 +26,7 @@ pipeline {
          * docker build on the command line */
       steps {
         script {
-          dockerImage = docker.build("mpastorg/mpg-vuejs:$RELEASE.$ENV.$BUILD_NUMBER",
+          dockerImage = docker.build("mpastorg/mpg-web:$RELEASE.$ENV.$BUILD_NUMBER",
               "-f ./dockerfile-pro/Dockerfile --build-arg SSH_PRIVATE_KEY=$mypwd .")
         }
       }

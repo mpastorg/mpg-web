@@ -15,8 +15,8 @@ spec:
           release: MPGRELEASE.MPGENV.MPGBUILD_NUMBER
      spec:
         containers:
-        - name: mpg-vue
-          image: mpastorg/mpg-vuejs:MPGRELEASE.MPGENV.MPGBUILD_NUMBER
+        - name: mpg-web
+          image: mpastorg/mpg-web:MPGRELEASE.MPGENV.MPGBUILD_NUMBER
           imagePullPolicy: Always
           ports:
           - containerPort: 443
