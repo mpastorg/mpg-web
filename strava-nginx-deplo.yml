@@ -25,9 +25,9 @@ spec:
           - name: cm-app-nginx-vol
             mountPath: "/etc/nginx/conf.d/"
           - name: cm-app-nginx-cert
-            mountPath: "/etc/nginx/"
+            mountPath: "/etc/nginx/cert/"
           - name: cm-app-nginx-key
-            mountPath: "/etc/nginx/"
+            mountPath: "/etc/nginx/key/"
           resources:
             limits:
               cpu: 500m
