@@ -9,10 +9,11 @@
     {{ $t('home-002') }}
     <center><table>
       <tr><td>- </td><td>
-    Microservices, Kubernetes, <a href="https://hub.docker.com/u/mpastorg">Docker</a>, Kafka
+    Microservices, Kubernetes, <a href="https://hub.docker.com/u/mpastorg" target="_blank">Docker</a>, Kafka
       </td></tr>
       <tr><td>- </td><td>
-    VueJS, <a href="https://github.com/mpastorg/react-activity">React</a>, Javascript, Java, SpringBoot 
+    <a href="https://github.com/mpastorg/mpg-web" target="_blank">VueJS</a>, 
+    <a href="https://github.com/mpastorg/react-activity" target="_blank">React</a>, Javascript, Java, SpringBoot 
       </td></tr>
       <tr><td>- </td><td>
     Machine Learning, Python, TensorFlow
@@ -43,7 +44,7 @@
       <b style='color:blue'> {{ $t('home-009') }}</b> {{ $t('home-010') }}  
       </td></tr>
     <tr><td>- </td><td>
-    {{ $t('home-017') }} <a href="https://github.com/mpastorg/">repos</a>{{ $t('home-018') }}
+    {{ $t('home-017') }} <a href="https://github.com/mpastorg/" target="_blank">repos</a>{{ $t('home-018') }}
       </td></tr>
     </table></center>
     </div>
@@ -61,10 +62,10 @@
       {{ $t('home-020') }}
       <br/><br/>
     
-    <a href="https://www.linkedin.com/in/mpastorg/">https://www.linkedin.com/in/mpastorg/</a>
+    <a href="https://www.linkedin.com/in/mpastorg/" target="_blank">https://www.linkedin.com/in/mpastorg/</a>
 
 <br/>    
-    <a href="https://twitter.com/mpastorg">https://twitter.com/mpastorg</a>
+    <a href="https://twitter.com/mpastorg" target="_blank">https://twitter.com/mpastorg</a>
 
  </div>
 </div>

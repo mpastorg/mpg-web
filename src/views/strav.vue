@@ -34,9 +34,9 @@
       </div>
   <div>
     <br/>
-  {{$t('strav-012')}} <a href="https://github.com/mpastorg/mpg-web"> mpg-web</a> ***
+  {{$t('strav-012')}} <a href="https://github.com/mpastorg/mpg-web" target="_blank"> mpg-web</a> ***
   <br/> <br/>
-  {{$t('strav-011')}} <a href="mailto:admin@madastur.com">admin@madastur.com</a> ***
+  {{$t('strav-011')}} <a href="mailto:admin@madastur.com" target="_blank">admin@madastur.com</a> ***
     </div>
 
 	</div>
