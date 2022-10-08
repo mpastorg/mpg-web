@@ -4,7 +4,7 @@ pipeline {
     ENV = 'pre'
     MPGHTTP_PORT = 32209
     MPGHTTPS_PORT = 32206
-    RELEASE = '0.4'
+    RELEASE = '0.5'
     registry = "mpastorg/mpg-web"
     registryCredential = 'dockerhub'
     dockerImage = ''
@@ -52,8 +52,8 @@ pipeline {
       steps{
         script{
             def remote = [:]
-            remote.name = 'mpg4ras01'
-            remote.host = 'mpg4ras01'
+            remote.name = 'mpgubumac01'
+            remote.host = 'mpgubumac01'
             remote.allowAnyHosts = true
             withCredentials([usernamePassword(credentialsId: 'mpgubumac01', usernameVariable: 'USERNAME'
             , passwordVariable: 'PASSWORD')])
