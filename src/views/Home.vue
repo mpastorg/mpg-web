@@ -55,11 +55,9 @@
       <b style="color:blue">MadAstur </b> {{ $t('home-013') }} 
     <br/>
     
-      {{ $t('home-014') }} <b style="color:blue">Chicago</b> 
-      {{ $t('home-015') }} <b style="color:blue">Birmingham</b>, Alabama 
-      {{ $t('home-016') }} <br/>
-      {{ $t('home-019') }} <b style="color:blue">London. </b> 
-      {{ $t('home-020') }}
+      {{ $t('home-014') }} <b style="color:blue">Birmingham</b>, Alabama {{ $t('home-015') }} <br/>
+      {{ $t('home-016') }} <b style="color:blue">Chicago, Illinois </b> {{ $t('home-019') }} <br/> 
+      {{ $t('home-020') }} <b style="color:blue">London, UK </b>  {{ $t('home-021') }}
       <br/><br/>
     
     <a href="https://www.linkedin.com/in/mpastorg/" target="_blank">https://www.linkedin.com/in/mpastorg/</a>
@@ -86,13 +84,14 @@
     ,"home-011":"¿Quien soy?"
     ,"home-012":"Asturiano de nacimiento. Madrileño a los dos años."
     ,"home-013":" ya de por vida."
-    ,"home-014":"¿Donde estoy? Ahora vivo en"
-    ,"home-015":"desde el 2020, y antes en"
-    ,"home-016":"desde 2013."
+    ,"home-014":"¿Y después? A "
+    ,"home-015":"en el 2013. "
+    ,"home-016":"A "
+    ,"home-019":" en el 2020. "
+    ,"home-020":"A "
+    ,"home-021":" en el 2023, y la siguiente parada sin definir. "
     ,"home-017":"Estos son mis"
     ,"home-018":". Muchos privados hasta que actualice la seguridad."
-    ,"home-019":"¿Próxima parada?"
-    ,"home-020":" A finales de año me mudo allí."
 	}
   ,"en":{
 		"home-001":"What can you expect here?"
@@ -108,13 +107,15 @@
     ,"home-011":"Who am I?"
     ,"home-012":"Born in Asturias. Raised in Madrid."
     ,"home-013":" for always."
-    ,"home-014":"Where you can find me? In"
-    ,"home-015":"since 2020, I used to live in "
-    ,"home-016":"since 2013."
+    ,"home-014":"And then I went to "
+    ,"home-015":"during 2013. "
+    ,"home-016":"To "
+    ,"home-019":" in 2020. "
+    ,"home-020":"To "
+    ,"home-021":" in 2023, y looking forward for the next stop. "
     ,"home-017":"These are my "
     ,"home-018":". Many are still private while I review and fix security."
-    ,"home-019":"Next station?"
-    ,"home-020":" Relocating by the of the year."}
+    
 
 }
 </i18n>
