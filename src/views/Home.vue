@@ -87,11 +87,11 @@
     ,"home-014":"¿Y después? A "
     ,"home-015":"en el 2013. "
     ,"home-016":"A "
-    ,"home-019":" en el 2020. "
-    ,"home-020":"A "
-    ,"home-021":" en el 2023, y la siguiente parada sin definir. "
     ,"home-017":"Estos son mis"
     ,"home-018":". Muchos privados hasta que actualice la seguridad."
+    ,"home-019":" en el 2020. "
+    ,"home-020":"A "
+    ,"home-021":" en el 2023, y mi siguiente parada sin definir. "
 	}
   ,"en":{
 		"home-001":"What can you expect here?"
@@ -110,13 +110,12 @@
     ,"home-014":"And then I went to "
     ,"home-015":"during 2013. "
     ,"home-016":"To "
-    ,"home-019":" in 2020. "
-    ,"home-020":"To "
-    ,"home-021":" in 2023, y looking forward for the next stop. "
     ,"home-017":"These are my "
     ,"home-018":". Many are still private while I review and fix security."
-    
-
+    ,"home-019":" in 2020. "
+    ,"home-020":"To "
+    ,"home-021":" in 2023, y looking forward for my next stop. "
+  }
 }
 </i18n>
 
