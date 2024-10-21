@@ -10,6 +10,7 @@
       | <router-link to="/">Home</router-link> |
       <router-link to="/strav">Strava</router-link> |
       <router-link to="/Idealista">Idealista</router-link> |
+      <a href="https://solana.madastur.com">Solana</a> |
       <router-link to="/about">{{ $t('app-001') }}</router-link> |
       <router-link to="/Doc">Doc</router-link> | 
     </div>
