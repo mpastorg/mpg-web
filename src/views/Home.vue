@@ -26,7 +26,7 @@
       <table border="0">
         <tr><td>- </td><td>
         <a href="https://solana.madastur.com">Solana</a>
-      {{ $t('home-021') }} <b style='color:blue'> {{ $t('home-022') }}</b> 
+      {{ $t('home-022') }} <b style='color:blue'> {{ $t('home-023') }}</b> 
       </td></tr>
       <tr><td>- </td><td>
       <router-link to="/strav">Strava.</router-link>
@@ -93,16 +93,11 @@
     ,"home-016":"A "
     ,"home-017":"Estos son mis"
     ,"home-018":". Muchos privados hasta que actualice la seguridad."
-<<<<<<< HEAD
     ,"home-019":" en el 2020. "
     ,"home-020":"A "
     ,"home-021":" en el 2023, y mi siguiente parada sin definir. "
-=======
-    ,"home-019":"¿Próxima parada?"
-    ,"home-020":" A finales de año me mudo allí."
-    ,"home-021":"Conecta tu Phantom Wallet y envía unos SOLs"
-    ,"home-022":" que me harán rico."
->>>>>>> 7ba1be7 (add solana)
+    ,"home-022":"Conecta tu Phantom Wallet y envía unos SOLs"
+    ,"home-023":" que me harán rico."
 	}
   ,"en":{
 		"home-001":"What can you expect here?"
@@ -123,18 +118,13 @@
     ,"home-016":"To "
     ,"home-017":"These are my "
     ,"home-018":". Many are still private while I review and fix security."
-<<<<<<< HEAD
     ,"home-019":" in 2020. "
     ,"home-020":"To "
     ,"home-021":" in 2023, y looking forward for my next stop. "
-  }
-=======
-    ,"home-019":"Next station?"
-    ,"home-020":" Relocating by the of the year."}
-    ,"home-021":"Connect your Phantom Wallet y send me a few SOLs"
-    ,"home-022":". Help me to be rich."
+    ,"home-022":"Connect your Phantom Wallet y send me a few SOLs"
+    ,"home-023":". Help me to be rich."
 
->>>>>>> 7ba1be7 (add solana)
+  }
 }
 </i18n>
 
